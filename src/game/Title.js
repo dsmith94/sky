@@ -1,30 +1,41 @@
 
 const Title = {
     screen: () => {
-        Msg.set(`
-
-            <b>Hey, It Works!</b>
+        m$(`
+        
+            Title Screen
 
         `)
 
-        Inp.add('Start', () => {
-            game = JSON.parse(JSON.stringify(Game));
-            Msg.set(`Nooo!!`);
+        once$(
+            `The cat waits`,
+            [
+                `foo`,
+                `bar`,
+                `foozle`,
+                `muddle`
+            ]    
+        )
+
+        i$('Start', () => {
+            game = {...Game};
+            console.log(game);
+            go$(game.intro.firstPage);
         })
 
-        Inp.add('About', () => Nav.go(Title.about));
+        i$('About', () => Nav.go(Title.about))
     },
 
     about: () => {
-        Msg.set(`
+        m$(`
 
             About this book
 
         `)
 
-        Inp.add('OK Then', () => Nav.go(Title.screen))
+        i$('OK Then', () => go$(Title.screen))
 
-        Inp.add('About', `Why Cat!!`);
+        i$('About', `Why Cat!!`)
     }
 }
 

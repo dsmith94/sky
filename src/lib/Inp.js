@@ -15,7 +15,6 @@ const Inp = {
         Msg.clear();
         Inp.clear();
         Inp.backButtonHidden = false;
-        setTimeout(() => {
           if (typeof callback === 'string') {
             Msg.set(callback);
           } else {
@@ -27,7 +26,6 @@ const Inp = {
             });
           }
           Inp.backButtonHidden = true;  
-        }, 10);
       };
       b.className = "Choice";
       b.innerHTML = skylight(label);
