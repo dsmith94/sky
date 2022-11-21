@@ -8,7 +8,6 @@ const Msg = {
   add: (elements) => {
     const e = document.getElementById("Output");
     if (e) {
-      elements = skylight(elements);
       elements = elements.split("\n\n").filter(f => f.trim() !== '');
       for (const el of elements) {
         const p = document.createElement("p");

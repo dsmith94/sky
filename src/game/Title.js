@@ -20,11 +20,14 @@ const Title = {
         i$('Start', () => {
             game = {...Game};
             console.log(game);
-            go$(game.intro.firstPage);
+            //go$(game.intro.firstPage);
+            go$(game.spaceKing.intro);
         })
 
         i$('About', () => Nav.go(Title.about))
     },
+
+
 
     about: () => {
         m$(`
