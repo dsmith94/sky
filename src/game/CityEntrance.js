@@ -3,7 +3,7 @@ Game.city = {
     const hologram = (g$.rebnah.hasMet) ? 'Rebnah' : 'hologram';
     m$(`
         
-        Not far from the hill where your spaceship crashed stands tall white stone wall surrounded by a bit of moat. A narrow bridge
+        Not far from the hill where your spaceship crashed stands a tall white stone wall surrounded by a thin brown line of a moat. A narrow bridge
         leads over the moat to an arched open gate made of brass and crystal. Beyond the gate is a sleepy little village.
         
         `);
@@ -27,7 +27,7 @@ Game.city = {
     } else {
         m$(`
         
-        Rebnah waves to you cheerily.
+        Rebnah the greeter hologram waves to you cheerily, which is impressive considering her vast quantity of arms.
         
         `)
     }

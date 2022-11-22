@@ -21,10 +21,10 @@ Game.intro = {
     m$(`
         
         Then another sound: this one is sudden and shakes the entire ship. You grasp a bulkhead and nearly slice your fingers on
-        the cheap titanium bolts holding your ship together. Another shake, like being inside dump truck that's currently
-        in the process of traversing to Mars with a catapult.
+        the cheap titanium bolts holding your ship together. Another shake, like being inside a dump truck that's currently
+        in the process of traversing to Mars by catapult.
 
-        After that, everything is still. The alarm was still ringing. Your engineer, and the only member of your crew, Yates,
+        After that, everything is still. The alarm is still ringing. Your engineer, and the only member of your crew, Yates,
         emerges into your still blurry vision.
         
         `);

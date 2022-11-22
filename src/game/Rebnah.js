@@ -13,7 +13,6 @@ Game.rebnah = {
         "Welcome, greetings, and many happy *frojniks* to you, off-worlder!" said the hologram with a smile. She wears a hat
         with the words Ask Me About My Home Planet embroidered in large red letters.
 
-
         "I welcome you to Planet Snorlag, the friendliest world this side of Mutter's Third Arm! My name is Rebnah—pleased to meet you! I am
         here to make sure your stay is simply Snor-tastic!"
 
@@ -38,7 +37,7 @@ Game.rebnah = {
                 Down below, in the fine print, you notice the token expired around ten Earth years ago.
 
                 Rebnah spies you reading the token. "Not bad, huh? Sounds like a great time when you make a new friend on our 
-                planet!" Then she leans in close. "Strictly between you and me, never date or Kevoriian. They're technically mollusks,
+                planet!" Then she leans in close. "Strictly between you and me, never date a Kevoriian. They're technically mollusks,
                 and their ichorous secretions are poisonous to humanoids. Also, they're slimy kissers.
                 
                 `)

@@ -24,8 +24,8 @@ const Title = {
             Why is Space King hanging around on the Planet Snorlag? Is all life in (our) universe about to end? And who would win:
             a faster-than-light spaceship, or a seagull?
 
-            These and other burning questions will be answered after your craft makes a sudden "emergency landing." Have you ever
-            wanted to save the universe? Don't kiss any Kevoriians.
+            These and other salient questions will be answered after your craft makes a sudden "emergency landing." Have you ever
+            wanted to save the universe? Don't kiss any Kevoriians, now.
 
         `)
 
