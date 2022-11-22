@@ -13,7 +13,7 @@ Game.intro = {
         `);
 
     i$(`Ugghh... It's too early for an emergency...`, () =>
-      go$(game.intro.secondPage)
+      go$(g$.intro.secondPage)
     );
   },
 
@@ -29,7 +29,7 @@ Game.intro = {
         
         `);
 
-    i$(`Yates! What happened?`, () => go$(game.intro.thirdPage));
+    i$(`Yates! What happened?`, () => go$(g$.intro.thirdPage));
   },
 
   thirdPage: () => {
@@ -43,6 +43,6 @@ Game.intro = {
         
         `);
 
-    i$(`Did you say two weeks?`, () => go$(game.myShip.outside));
+    i$(`Did you say two weeks?`, () => go$(g$.myShip.outside));
   },
 };

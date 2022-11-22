@@ -27,7 +27,7 @@ Game.myShip = {
 
         `)
 
-        i$('Climb down to the Main Deck', () => go$(game.myShip.mainDeck))
+        i$('Climb down to the Main Deck', () => go$(g$.myShip.mainDeck))
 
         i$('Sit in the chair', () => `You sit in the command chair and feel very heroic.`)
 

@@ -14,14 +14,14 @@ const ShowOnce = (showFirst, showLater) => {
 
   const id = `i${stringToHash()}`;
 
-  if (game[id]) {
+  if (g$[id]) {
     if (Array.isArray(showLater)) {
       rnd$(showLater);
     } else {
       m$(showLater);
     }
   } else {
-    game[id] = true;
-    m$(showFirst);  
+    g$[id] = true;
+    m$(showFirst);
   }
 };

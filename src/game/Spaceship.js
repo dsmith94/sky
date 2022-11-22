@@ -10,7 +10,7 @@ Game.myShip = {
 
         `);
 
-    i$("Climb down to the Main Deck", () => go$(game.myShip.mainDeck));
+    i$("Climb down to the Main Deck", () => go$(g$.myShip.mainDeck));
 
     i$(
       "Sit in the chair",
@@ -32,13 +32,13 @@ Game.myShip = {
     
     `);
 
-    i$(`Go to the cockpit`, () => go$(game.myShip.cockpit));
+    i$(`Go to the cockpit`, () => go$(g$.myShip.cockpit));
 
-    i$(`Exit the ship`, () => go$(game.myShip.outside));
+    i$(`Exit the ship`, () => go$(g$.myShip.outside));
   },
 
   outside: () => {
-    if (game.myShip.stillHere) {
+    if (g$.myShip.stillHere) {
       m$(`
     
     Your ship lies in a crumpled heap at the top of a hill. Yates is kneeled next to an open panel, attempting repairs. A winding
@@ -46,11 +46,11 @@ Game.myShip = {
     
     `);
 
-      i$(`Hey, Yates`, () => go$(game.yates.intro));
+      i$(`Hey, Yates`, () => go$(g$.yates.intro));
 
-      i$(`Enter the ship`, () => go$(game.myShip.mainDeck));
+      i$(`Enter the ship`, () => go$(g$.myShip.mainDeck));
     }
 
-    i$(`Go down to the village`, () => go$(game.village.mainPath));
+    i$(`Go down to the village`, () => go$(g$.city.entrance));
   },
 };

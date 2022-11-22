@@ -36,12 +36,12 @@ Game.spaceKing = {
       `
         
         "It is, isn't it," said Space King. "It is very nice to meet me, of course. I'm thinking of adding a dash to my name. You know,
-        Space-King. It sounds more grand and purposeful."
+        Space-King. It sounds more grand and purposeful." His hair blows majestically in the wind.
         
         `
     );
 
-    game.spaceKing.preventWar &&
+    g$.spaceKing.preventWar &&
       i$(
         `So what are you doing to prevent war?`,
         `
@@ -53,7 +53,7 @@ Game.spaceKing = {
       );
 
     i1$(`What are you doing *here* of all places?`, () => {
-      game.spaceKing.preventWar = true;
+      g$.spaceKing.preventWar = true;
       m$(`
         
         "A fair question," nodded Space King. “After all, why should a being of my incredible talent be relegated to dealing with such limited

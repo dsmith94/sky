@@ -7,7 +7,6 @@ const Inp = {
   },
 
   displayOnce: (label, callback) => {
-
     function stringToHash() {
       var hash = 0;
       if (label.length == 0) {
@@ -23,17 +22,16 @@ const Inp = {
 
     const id = `d${stringToHash()}`;
 
-    if (!game[id]) {
+    if (!g$[id]) {
       Inp.add(label, () => {
-        game[id] = true;
-        if (typeof callback === 'string') {
+        g$[id] = true;
+        if (typeof callback === "string") {
           Msg.set(callback);
         } else {
           callback();
         }
       });
     }
-
   },
 
   add: (label, callback) => {
@@ -45,17 +43,18 @@ const Inp = {
         Msg.clear();
         Inp.clear();
         Inp.backButtonHidden = false;
-          if (typeof callback === 'string') {
-            Msg.set(callback);
-          } else {
-            callback();
-          }
-          if (!Inp.backButtonHidden) {
-            Inp.add("Back", () => {
-              Nav.go(Nav.lastCallback);
-            });
-          }
-          Inp.backButtonHidden = true;  
+        window.scrollTo(0, 0);
+        if (typeof callback === "string") {
+          Msg.set(callback);
+        } else {
+          callback();
+        }
+        if (!Inp.backButtonHidden) {
+          Inp.add("Back", () => {
+            Nav.go(Nav.lastCallback);
+          });
+        }
+        Inp.backButtonHidden = true;
       };
       b.className = "Choice";
       b.innerHTML = skylight(label);

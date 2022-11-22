@@ -1,5 +1,4 @@
 
-var game = {};
 
 function getStarted() {
     Nav.go(Title.screen);

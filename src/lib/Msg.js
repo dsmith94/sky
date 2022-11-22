@@ -8,7 +8,7 @@ const Msg = {
   add: (elements) => {
     const e = document.getElementById("Output");
     if (e) {
-      elements = elements.split("\n\n").filter(f => f.trim() !== '');
+      elements = elements.split('\n').map(f => f.trim()).join('\n').split("\n\n").filter(f => f !== '');
       for (const el of elements) {
         const p = document.createElement("p");
         p.innerHTML = skylight(el);
