@@ -1,14 +1,34 @@
 
 body {
     background-color: #001A38;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Main {
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .Output {
-    margin: 10vw;
+    max-width: 400px;
+    min-height: 40vh;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .Buttons {
-    margin: 8vw;
+    max-width: 400px;
+    min-height: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .Choice {
@@ -22,7 +42,7 @@ body {
     border-width: 0px;
     border-radius: 10px;
     color: whitesmoke;
-    font-size: 2.1em;
+    font-size: 1.5em;
 }
 
 p {
@@ -32,7 +52,7 @@ p {
     margin-top: 0px;
     margin-bottom: 5px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 h1 {
@@ -41,5 +61,15 @@ h1 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-indent: 0px;
     text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.25);
-    font-size: 4em;
+    font-size: 2.1em;
 }
+
+h3 {
+    color: #9f9f9f;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-indent: 0px;
+    text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.25);
+    font-size: 1.5em;
+}
+
