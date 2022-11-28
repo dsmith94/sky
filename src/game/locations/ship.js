@@ -44,7 +44,24 @@ Game.outsideShip = () => {
       
     `)
 
+    roll(50) && p$(pick([
+      'A big pink cloud poofs on by over the horizon.',
+      'A gentle breeze blows peacefully.',
+      'Some distant animal squawks mournfully from the valley below.',
+    ]))
+
     b$(`Hey, Yates`, () => talk("yates"))
+
+    b$(`Admire my ship`, `
+    
+    It's a CM6305 Talon Class Explorer ship, fitting with your job as a space explorer-for-hire. For certain, it's seen better days,
+    this morning's landing not withstanding. Currently, Yates ${pick([
+      'has coolant spilled all over the hull',
+      'is tightening bolts on a rusted structural support',
+      'pulling a fuel hose from under the engine'
+    ])}.
+    
+    `)
 
     b$(`Enter the ship`, () => go("mainDeck"))
   } else {

@@ -85,7 +85,7 @@ h3 {
 }
 
 button {
-  border-radius: 8px;
+  border-radius: 0.25em;
   border: 1px solid transparent;
   padding: 0.6em;
   width: 100%;

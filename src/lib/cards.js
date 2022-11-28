@@ -38,7 +38,7 @@ const b$ = (label, callback) => {
         backButtonHidden = false
       }
       if (!backButtonHidden && lastNode) {
-        b$("Back", () => {
+        b$("✔", () => {
           if (lastNode) {
             lastNode()
           }
