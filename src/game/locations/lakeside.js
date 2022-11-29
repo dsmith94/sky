@@ -3,7 +3,7 @@ Game.lakeSide = () => {
 
   p$(`
     
-    A wide blue artificial lake lies here at the bottom of the valley by the village. Over the lake is an enormous sign, so massive
+    At the bottom of the valley by the village is a clear, blue lake. Over the lake is an enormous sign, so massive
     it cannot possibly be floating on its own but appears to be doing so effortlessly.
     Standing directly underneath the sign, near the water, is ${a}
     ${name}. Back up the path is the village, and not far along the shore the lake muddies into a swamp.

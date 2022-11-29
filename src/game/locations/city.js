@@ -1,8 +1,8 @@
 Game.city = () => {
     p$(`
           
-    A narrow metal road heads in straight paths between squat stucco buildings. The streets are deserted, though
-    you can hear a big party down the way. Posted over the street sign is hastily scrawled message on what appears to be
+    A narrow metal road runs in straight paths between squat stucco buildings. The streets are deserted, though you can
+    hear sounds of a party nearby. Posted over the street sign is hastily scrawled message on what appears to be
     white party supply paper. 
           
     `)
@@ -23,6 +23,7 @@ Game.city = () => {
     `)
 
   
+    b$(`Find the repair shop`, () => go("shipRepairShop"))
     b$(`Walk to the festival`, () => {
       p$(`Your skin tingles a bit as you pass through a compression field and are shrunk to a couple of millimeters tall
       so as to enter the venue.`)
