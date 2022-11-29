@@ -5,9 +5,9 @@ let currentLocationName = ''
 
 const go = (location) => {
   backButtonHidden = true
+  currentLocationName = location
   g$[location]()
   lastNode = g$[location]
-  currentLocationName = location
 }
 
 const setState = (character, state) => {

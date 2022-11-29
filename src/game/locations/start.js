@@ -58,10 +58,10 @@ Game.intro2 = () => {
 Game.intro3 = () => {
   p$(`
           
-    "Sorry, boss," said Yates with a noisy slurp. He was drinking something. Slowly it dawned on you; it was a ginormous can of raspberry soda pop,
+    "Sorry, boss," said Yates with a noisy slurp. He was drinking something. In his grip was a ginormous can of raspberry soda pop,
     festooned with a cherry-red flamingo straw.
 
-    "Not sure how it happened, but somebody got raspberry soda all over the engine core. Had to make an emergency landing till
+    "Not sure how it happened, but somebody spilled raspberry soda all over the engine core. Had to make an emergency landing till
     we can fix this rig. Shouldn't be more than a couple of weeks.
           
     `)

@@ -15,11 +15,11 @@ Game.cityEntrance = () => {
   ]))
 
   b$(`Chat with ${the} ${name}`, () => talk("rebnah"))
-  b$(
+  b1$(
     `Read the 1000 meter tall sign`,
-    `The writing is small, you'll have to get closer.`
+    `The writing is small, you'll have to get closer by heading towards the lake.`
   )
   b$(`Head up the hill`, () => go("outsideShip"))
   b$(`Follow the path to the lake`, () => go("lakeSide"))
-  b$(`Enter the city`, () => go("outsideShip"))
+  b$(`Enter the village`, () => go("city"))
 }

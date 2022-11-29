@@ -1,6 +1,7 @@
 Game.rebnah = {
   hasTheToken: false,
   name: "greeter hologram",
+  exitText: "Nice chatting with you",
 
   desc: () => {
     if (!hasMet("rebnah")) {
@@ -21,8 +22,12 @@ Game.rebnah = {
     } else {
       p$(`
               
-              Rebnah the greeter hologram waves to you cheerily, which is impressive considering her vast quantity of arms. ${roll(25) ? `She 
-              snorts and rubs her fantastic nose.` : ''}
+              Rebnah the greeter hologram waves to you cheerily, which is impressive considering her vast quantity of arms. ${
+                roll(25)
+                  ? `She 
+              emits a thunderous snort and rubs her fantastic nose.`
+                  : ""
+              }
               
           `)
     }
@@ -50,7 +55,6 @@ Game.rebnah = {
           `
     )
     setName("Rebnah")
-
 
     b$(`Tell me about your home planet`, () => {
       p1$(
@@ -105,5 +109,34 @@ Game.rebnah = {
     }
 
     done("See you later")
+  },
+
+  afterShipDestroyed: () => {
+    p$(`
+              
+    Rebnah the greeter hologram offers a wan smile, seemingly aware that you're having a rough day.
+    
+    `)
+
+    b$(`Do you just pop in and out of existence like that all the time?`, () => {
+      c$.exitText = "Well, it's been a... pleasure, I guess"
+
+      p$(`
+      
+      "Oh no." Rebnah's gaze turned dark. "Being stored in computer memory is like torture. Imagine an eternity of suffering, never living
+      but never really dying, where every inch of your person is in unimaginable pain, and your internal 
+      organs are jostled inside you like hot rocks and battery acid in a blender."
+      
+      `)
+
+      b$(`That's... horrific...`, `
+      
+      "Yeah but you get used to it."
+      
+      `)
+
+    })
+
+    done(c$.exitText)
   },
 }
