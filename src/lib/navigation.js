@@ -45,7 +45,7 @@ const setState = (character, state) => {
 
 /**
  * Initiate new conversation with character.
- * @param {Character} character String identifier of .
+ * @param {Character} character String identifier of character you wish to initiate conversation.
  */
 const talk = (character) => {
   g$.isTalking = character
@@ -59,7 +59,8 @@ const talk = (character) => {
 
 /**
  * Finish conversation with character.
- * @param {Character} character String identifier of .
+ * @param {string} label Text message to display on the Done with Conversation button.
+ * @param {function} [finishConversationCallback] Optional. Callback to perform some action when the conversation is finished.
  */
 const done = (label, finishConversationCallback) =>
   b$(label, () => {

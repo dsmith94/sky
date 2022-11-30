@@ -9,11 +9,17 @@
  * @property {function()} desc - Default character description callback. Called typically by the getDesc function.
  */
 
+
+/**
+ * Capitalize first character of string.
+ * @param {string} str String to operate on.
+ * @returns {string} String with first letter capitalized.
+ */
 const capitalize = (str) => str[0].toUpperCase() + str.slice(1)
 
 /**
  * Get reference articles and name of character for screen printing.
- * @param {Character} character String identifier of character.
+ * @param {Character} [character] Optional. String identifier of character. This isn't necessary if you're talking to the character presently.
  * @returns {Array} Articles and current name of character, in form of [name a, the, that].
  */
 const getName = (character) => {
@@ -23,13 +29,14 @@ const getName = (character) => {
   const a = g$[character]["a"] ?? "a"
   const the = g$[character]["the"] ?? "the"
   const that = g$[character]["that"] ?? "that"
-  const name = g$[character]["name"] ?? "man"
+  const name = g$[character]["name"] ?? "person"
   return [name, a, the, that]
 }
 
 /**
  * Sets name of character, often after player has learned the name.
- * @param {Character} character String identifier of character.
+ * @param {string} name Screen-friendly name of character, ala "Lord Dimwit Flathead" instead of the internal game id.
+ * @param {Character} [character] Optional. String identifier of character. This isn't necessary if you're talking to the character presently.
  */
 const setName = (name, character) => {
   if (!character) {
@@ -43,7 +50,8 @@ const setName = (name, character) => {
 
 /**
  * Determines if player has yet encountered a character.
- * @returns {Boolean} True if player has met character in the narrative.
+ * @param {Character} [character] Optional. String identifier of character. This isn't necessary if you're talking to the character presently.
+ * @returns {boolean} True if player has met character in the narrative.
  */
 const hasMet = (character) => {
   if (!character) {
@@ -52,6 +60,11 @@ const hasMet = (character) => {
   return g$[character]["hasMet"]
 }
 
+/**
+ * Gets the string of text to put on the Talk to button for a given character.
+ * @param {Character} [character] Optional. String identifier of character. This isn't necessary if you're talking to the character presently.
+ * @returns {string} Text for the Talk to button.
+ */
 const getTalkLabel = (character) => {
   if (!character) {
     character = g$.isTalking
@@ -67,6 +80,11 @@ const getTalkLabel = (character) => {
   return `Talk to ${the} ${name}`
 }
 
+/**
+ * Gets the active description for a character.
+ * @param {Character} [character] Optional. String identifier of character. This isn't necessary if you're talking to the character presently.
+ * @returns {string} Text string for character description.
+ */
 const getDesc = (character) => {
   if (!character) {
     character = g$.isTalking

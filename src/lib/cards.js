@@ -1,5 +1,11 @@
 let backButtonHidden = false
 
+/**
+ * Displays a one-time button. After button is pressed, it will never show again this game.
+ * @param {string} label Label for button.
+ * @param {function} callback Callback to execute on press.
+ * @param {boolean?} [unshift] If unshift value is set to true, button will be added to top of list instead of appended.
+ */
 const b1$ = (label, callback, unshift) => {
   function stringToHash() {
     var hash = 0
@@ -24,6 +30,12 @@ const b1$ = (label, callback, unshift) => {
   }
 }
 
+/**
+ * Displays a button.
+ * @param {string} label Label for button.
+ * @param {function} callback Callback to execute on press.
+ * @param {boolean} [unshift] Optional. If unshift value is set to true, button will be added to top of list instead of appended.
+ */
 const b$ = (label, callback, unshift) => {
   const e = document.getElementById("card")
   if (e && label && callback) {
@@ -33,7 +45,11 @@ const b$ = (label, callback, unshift) => {
       clearScreen()
       backButtonHidden = true
       window.scrollTo(0, 0)
-      p$(callback)
+      if (typeof callback === 'string') {
+        p$(callback)
+      } else {
+        callback()
+      }
       if (document.getElementById("card").innerHTML === "") {
         backButtonHidden = false
       }

@@ -1,6 +1,5 @@
 /** @type {LocationType} */
 Game.cityEntrance = () => {
-  const [name, a, the, that] = getName("rebnah")
   p$(`
         
         Not far from the hill where your spaceship crashed stands a tall white stone wall surrounded by a thin brown line of a moat. A narrow bridge

@@ -1,3 +1,11 @@
+
+/**
+ * Skylight string processor. Allows the author to use a markdown-like syntax for text display strings.
+ * It is unlikely you'll need to call this yourself.
+ * @param {string} str String to operate on.
+ * @param {boolean} [skipParagraphTags=false] Do not add paragraph tags to final html markup. This is (almost) never necessary.
+ * @returns {string} Completed processed string.
+ */
 const skylight = (str, skipParagraphTags=false) => {
   const markup = (str) => {
     const start = {
