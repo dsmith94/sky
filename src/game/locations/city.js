@@ -1,3 +1,4 @@
+/** @type {LocationType} */
 Game.city = () => {
     p$(`
           

@@ -1,3 +1,4 @@
+/** @type {LocationType} */
 Game.festival = () => {
   const [name, a, the, that] = getName("merrick")
   p$(`

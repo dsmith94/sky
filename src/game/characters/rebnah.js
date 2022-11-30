@@ -1,39 +1,42 @@
+/** @type {CharacterType} */
 Game.rebnah = {
-  hasTheToken: false,
-  name: "greeter hologram",
+
   exitText: "Nice chatting with you",
+  hasTheToken: false,
 
-  desc: () => {
-    if (!hasMet("rebnah")) {
-      const d = `She has numerous arms in inconvenient places and a noggin which resembles that of a reasonably pleased purple rhinoceros.`
-      p1$(
-        `
-              
-              One of those weird greeter holograms has popped out of thin air. ${d}
-              
-              `,
+  name: "greeter hologram",
 
-        `
-              
-              That greeter hologram is trying to get your attention. ${d}
-              
-              `
-      )
-    } else {
-      p$(`
-              
-              Rebnah the greeter hologram waves to you cheerily, which is impressive considering her vast quantity of arms. ${
-                roll(25)
-                  ? `She 
-              emits a thunderous snort and rubs her fantastic nose.`
-                  : ""
-              }
-              
-          `)
-    }
+  
+  notMet: () => {
+    const d = `She has numerous arms in inconvenient places and a noggin which resembles that of a reasonably pleased purple rhinoceros.`
+    p1$(
+      `
+            
+      One of those weird greeter holograms has popped out of thin air. ${d}
+            
+      `,
+      `
+            
+      That greeter hologram is trying to get your attention. ${d}
+            
+      `
+    )
   },
 
-  _: () => {
+  desc: () => {
+    p$(`
+              
+        Rebnah the greeter hologram waves to you cheerily, which is impressive considering her vast quantity of arms. ${
+          roll(25)
+            ? `She 
+              emits a thunderous snort and rubs her fantastic nose.`
+            : ""
+        }
+              
+    `)
+  },
+
+  talk: () => {
     c$.hasTheToken = true
     p1$(
       `
@@ -118,10 +121,12 @@ Game.rebnah = {
     
     `)
 
-    b$(`Do you just pop in and out of existence like that all the time?`, () => {
-      c$.exitText = "Well, it's been a... pleasure, I guess"
+    b$(
+      `Do you just pop in and out of existence like that all the time?`,
+      () => {
+        c$.exitText = "Well, it's been a... pleasure, I guess"
 
-      p$(`
+        p$(`
       
       "Oh no." Rebnah's gaze turned dark. "Being stored in computer memory is like torture. Imagine an eternity of suffering, never living
       but never really dying, where every inch of your person is in unimaginable pain, and your internal 
@@ -129,13 +134,16 @@ Game.rebnah = {
       
       `)
 
-      b$(`That's... horrific...`, `
+        b$(
+          `That's... horrific...`,
+          `
       
       "Yeah but you get used to it."
       
-      `)
-
-    })
+      `
+        )
+      }
+    )
 
     done(c$.exitText)
   },

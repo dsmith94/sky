@@ -1,3 +1,4 @@
+/** @type {CharacterType} */
 Game.merrick = {
     name: "frat scientist",
     location: "festival",
@@ -20,7 +21,7 @@ Game.merrick = {
       }
     },
   
-    _: () => {
+    talk: () => {
       p1$(
         `
 

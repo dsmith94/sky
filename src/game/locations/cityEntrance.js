@@ -1,3 +1,4 @@
+/** @type {LocationType} */
 Game.cityEntrance = () => {
   const [name, a, the, that] = getName("rebnah")
   p$(`

@@ -1,7 +1,8 @@
+/** @type {CharacterType} */
 Game.yates = {
   askedAboutName: false,
 
-  _: () => {
+  talk: () => {
     const nameQuestion = c$.askedAboutName
       ? "Tell me again why your name is Yates"
       : "So, I've never asked: why are you named *Yates*?"
@@ -24,7 +25,6 @@ Game.yates = {
             "Actually," said Yates, "My true designation is Cybernetic Reploid model 88, or CR-88.
             My first owner called my Crazy 8's, then my next owner called
             me Eights, and finally the last one called my Yates."
-                  
         `)
     })
 
@@ -52,7 +52,7 @@ Game.yates = {
     )
 
     b$(`Thank you for working so hard, Yates`, () => {
-      setState("yates", "_")
+      setState("yates", "talk")
       p$(`
         
         "Thanks. I'm going as fast as I can."

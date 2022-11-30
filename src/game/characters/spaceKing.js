@@ -1,8 +1,9 @@
+/** @type {CharacterType} */
 Game.spaceKing = {
   preventWar: false,
   name: 'man',
 
-  _: () => {
+  talk: () => {
     setName('Space King')
     p1$(
       `

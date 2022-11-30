@@ -1,3 +1,4 @@
+/** @type {LocationType} */
 Game.lakeSide = () => {
   const [name, a, the] = getName("spaceKing")
 

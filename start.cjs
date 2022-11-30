@@ -28,23 +28,76 @@ const createTree = async (path) => {
   }
 }
 
-const buildCodeObject = async () => {
+
+const getLocationNames = (allTheCode) => {
+  const loc = [];
+  allTheCode = allTheCode.split('\n')
+  allTheCode.map((line, lineNumber) => {
+    if (line.indexOf('/** @type {LocationType} */') > -1) {
+      const nextLine = allTheCode[lineNumber + 1]
+      if (nextLine) {
+        if (nextLine.trim().indexOf('Game.') === 0) {
+          const tokens = nextLine.trim().split('=')
+          const id = tokens[0].slice(5).trim()
+          loc.push(`'${id}'`)
+        }
+      }
+    }
+  })
+  return `
+/**
+ * @typedef Location
+ * @type {${loc.join('|')}}
+ */
+  `
+}
+
+
+const getCharacterNames = (allTheCode) => {
+  const chars = [];
+  allTheCode = allTheCode.split('\n')
+  allTheCode.map((line, lineNumber) => {
+    if (line.indexOf('/** @type {CharacterType} */') > -1) {
+      const nextLine = allTheCode[lineNumber + 1]
+      if (nextLine) {
+        if (nextLine.trim().indexOf('Game.') === 0) {
+          const tokens = nextLine.trim().split('=')
+          const id = tokens[0].slice(5).trim()
+          chars.push(`'${id}'`)
+        }
+      }
+    }
+  })
+  return `
+/**
+ * @typedef Character
+ * @type {${chars.join('|')}}
+ */
+  `
+}
+
+
+const buildCodeTree = async () => {
   try {
     await createTree(basePath)
-    const result = UglifyJS.minify(code, { 
-      toplevel: true,
-      sourceMap: {
-        url: 'sky.min.js.map'
-      }
-     })
+    const wholeEnchilada = Object.keys(code).map(k => code[k]).join('\n')
+    const locations = getLocationNames(wholeEnchilada)
+    const characters = getCharacterNames(wholeEnchilada)
+    const result = UglifyJS.minify(code, { toplevel: true })
     const minifiedBuffer = Buffer.from(result.code)
-    const mapBuffer = Buffer.from(result.map)
+    const locationBuffer = Buffer.from(locations)
+    const characterBuffer = Buffer.from(characters)
     fs.writeFile("./public/sky.min.js", minifiedBuffer, (err) => {
       if (err) {
         throw err
       } 
     })
-    fs.writeFile("./public/sky.min.js.map", mapBuffer, (err) => {
+    fs.writeFile("./jsdoc/locations.js", locationBuffer, (err) => {
+      if (err) {
+        throw err
+      } 
+    })
+    fs.writeFile("./jsdoc/characters.js", characterBuffer, (err) => {
       if (err) {
         throw err
       } 
@@ -55,9 +108,9 @@ const buildCodeObject = async () => {
 }
 
 chokidar.watch("./src").on("all", (event, path) => {
-  buildCodeObject()
+  buildCodeTree()
 })
-buildCodeObject()
+buildCodeTree()
 
 const liveServerParams = {
   port: 8181, // Set the server port. Defaults to 8080.

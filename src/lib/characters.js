@@ -1,3 +1,13 @@
+/**
+ * @typedef CharacterType
+ * @type {object}
+ * @property {string} name - Character name.
+ * @property {string} location - Character location; should match the string-based identifier of a location in the game.
+ * @property {function()} talk - Common character state called on talk command if no state is set.
+ * @property {function()} notMet - Callback to run if character has not been met yet and desc is called.
+ * @property {function()} desc - Default character description callback. Called typically by the getDesc function.
+ */
+
 const capitalize = (str) => str[0].toUpperCase() + str.slice(1)
 
 const getName = (character) => {
@@ -32,7 +42,16 @@ const getDesc = (character) => {
   if (!character) {
     character = g$.isTalking
   }
-  if (typeof g$[character]["desc"] === 'function') {
+  if (!hasMet(character)) {
+    if (g$[character]["notMet"]) {
+      if (typeof g$[character]["notMet"] === "function") {
+        return g$[character]["notMet"]()
+      } else {
+        return g$[character]["notMet"] ?? capitalize(`${the} ${name} is here.`)
+      }
+    }
+  }
+  if (typeof g$[character]["desc"] === "function") {
     return g$[character]["desc"]()
   }
   const [name, a, the] = getName(character)

@@ -1,3 +1,4 @@
+/** @type {LocationType} */
 Game.nearSwamp = () => {
   const [name, a, the, that] = getName("loon")
   const loonPresent = g$.loon.location === currentLocationName

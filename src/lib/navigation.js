@@ -3,6 +3,10 @@ let c$ = {}
 let lastNode = () => {}
 let currentLocationName = ''
 
+/**
+ * Navigate player to a new location.
+ * @param {Location} location String identifier of location to navigate.
+ */
 const go = (location) => {
   backButtonHidden = true
   currentLocationName = location
@@ -18,6 +22,11 @@ const setState = (character, state) => {
   }
 }
 
+
+/**
+ * Initiate new conversation with character.
+ * @param {Character} character String identifier of character.
+ */
 const talk = (character) => {
   g$.isTalking = character
   c$ = g$[character]

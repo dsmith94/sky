@@ -1,26 +1,24 @@
+/** @type {CharacterType} */
 Game.loon = {
   name: "green man",
   location: "nearSwamp",
   exitText: "Nice chatting with you",
 
-  desc: () => {
-    if (!hasMet("loon")) {
-      p$(`
-        
-        A funny little green man is half sunk into the sludge, wearing a white laboratory cardigan and excitedly filling test tubes with
-        muck. He appears to be having a good time, at any rate.
-        
-        `)
-    } else {
-      p$(`
-        
-        Professor Loon is still here, gathering more sludge into tubes.
-        
-      `)
-    }
-  },
+  notMet: () => p$(`
+  
+  A funny little green man is half sunk into the sludge, wearing a
+  white laboratory cardigan and excitedly filling test tubes with 
+  muck. He appears to be having a good time, at any rate.
+  
+  `),
 
-  _: () => {
+  desc: () => p$(`
+
+  Professor Loon is still here, gathering more sludge into tubes.
+  
+  `),
+
+  talk: () => {
     p1$(
       `
 

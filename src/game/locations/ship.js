@@ -2,6 +2,7 @@ Game.myShip = {
   stillHere: true,
 }
 
+/** @type {LocationType} */
 Game.cockpit = () => {
   p$(`
           
@@ -21,6 +22,7 @@ Game.cockpit = () => {
   )
 }
 
+/** @type {LocationType} */
 Game.mainDeck = () => {
   p$(`
       
@@ -35,6 +37,7 @@ Game.mainDeck = () => {
   b$(`Exit the ship`, () => go("outsideShip"))
 }
 
+/** @type {LocationType} */
 Game.outsideShip = () => {
   if (g$.myShip.stillHere) {
     p$(`
