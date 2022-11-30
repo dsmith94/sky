@@ -20,7 +20,7 @@ Game.festival = () => {
   b$(`Talk to ${the} ${name}`, () => talk("merrick"))
   b$(
     `Dance with the crowd`,
-    `OOF! OUCH! HMPH! Arms, legs and tentacles flail around you as you attempt to cut a rug.`
+    `OOF! OUCH! HMPH! Arms, tentacles, and other miscellaneous appendages flail into your carbon-based biology as you attempt to cut a rug.`
   )
   b$(
     `Listen to the music`,

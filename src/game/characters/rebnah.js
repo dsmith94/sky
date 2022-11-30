@@ -1,30 +1,26 @@
 /** @type {CharacterType} */
 Game.rebnah = {
-
   exitText: "Nice chatting with you",
   hasTheToken: false,
+  location: "cityEntrance",
 
   name: "greeter hologram",
 
-  
+  talkLabel: () => {
+    const [name, a, the, that] = getName('rebnah')
+    return `Chat with ${the} ${name}`
+  },
+
   notMet: () => {
     const d = `She has numerous arms in inconvenient places and a noggin which resembles that of a reasonably pleased purple rhinoceros.`
-    p1$(
-      `
+    return `
             
       One of those weird greeter holograms has popped out of thin air. ${d}
             
-      `,
       `
-            
-      That greeter hologram is trying to get your attention. ${d}
-            
-      `
-    )
   },
 
-  desc: () => {
-    p$(`
+  desc: () => `
               
         Rebnah the greeter hologram waves to you cheerily, which is impressive considering her vast quantity of arms. ${
           roll(25)
@@ -33,8 +29,7 @@ Game.rebnah = {
             : ""
         }
               
-    `)
-  },
+    `,
 
   talk: () => {
     c$.hasTheToken = true

@@ -1,6 +1,6 @@
 let backButtonHidden = false
 
-const b1$ = (label, callback) => {
+const b1$ = (label, callback, unshift) => {
   function stringToHash() {
     var hash = 0
     if (label.length == 0) {
@@ -20,11 +20,11 @@ const b1$ = (label, callback) => {
     b$(label, () => {
       g$[id] = true
       p$(callback)
-    })
+    }, unshift)
   }
 }
 
-const b$ = (label, callback) => {
+const b$ = (label, callback, unshift) => {
   const e = document.getElementById("card")
   if (e && label && callback) {
     label = label.trim()
@@ -38,7 +38,7 @@ const b$ = (label, callback) => {
         backButtonHidden = false
       }
       if (!backButtonHidden && lastNode) {
-        b$("✔", () => {
+        b$("OK", () => {
           if (lastNode) {
             lastNode()
           }
@@ -47,6 +47,11 @@ const b$ = (label, callback) => {
     }
     b.className = "button"
     b.innerHTML = `<div class='buttonText'>${skylight(label, true)}</div>`
-    e.appendChild(b)
+    if (!unshift) {
+      e.appendChild(b)
+    } else {
+      e.prepend(b)
+    }
   }
 }
+

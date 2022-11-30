@@ -1,7 +1,6 @@
 /** @type {CharacterType} */
 Game.merrick = {
     name: "frat scientist",
-    location: "festival",
     exitText: "Uh, carry on I guess",
   
     desc: () => {

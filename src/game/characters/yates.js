@@ -32,7 +32,9 @@ Game.yates = {
       setState("yates", "annoyed")
       p$(`"I'm working as fast as I can," he grumbled.`)
     })
-    done(`Well, keep working, we've got to get off this rock`)
+    done(`Well, keep working, we've got to get off this rock`, () => {
+      p$(`Yates nods and buries himself in repair work. A shadow of paranoia crosses your mind that he may not know what he's doing.`)
+    })
   },
 
   annoyed: () => {

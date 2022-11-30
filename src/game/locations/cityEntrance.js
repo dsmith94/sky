@@ -8,14 +8,12 @@ Game.cityEntrance = () => {
         the path forks down by a lake, over which floats a 1000 meter tall sign.
         
     `)
-  getDesc('rebnah')
 
   roll(50) && p$(pick([
     'A door quietly shuts somewhere beyond the wall.',
     'The wind whips just enough around the walls to produce a low, sad whistle.',
   ]))
 
-  b$(`Chat with ${the} ${name}`, () => talk("rebnah"))
   b1$(
     `Read the 1000 meter tall sign`,
     `The writing is small, you'll have to get closer by heading towards the lake.`
