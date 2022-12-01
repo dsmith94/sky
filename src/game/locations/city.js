@@ -25,8 +25,12 @@ Game.city = () => {
 
   
     b$(`Find the repair shop`, () => go("shipRepairShop"))
+
+    b$(`Enter the library`, () => go('library'))
+
     b$(`Walk to the festival`, () => {
-      p$(`Your skin tingles a bit as you pass through a compression field and are shrunk to a couple of millimeters tall
+      p$(`Your skin tingles a bit as you pass through a compression field and
+      are shrunk to a couple of millimeters tall
       so as to enter the venue.`)
       b$(`Hey that tickles`, () => go("festival"))
     })

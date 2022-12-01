@@ -48,12 +48,39 @@ Game.merrick = {
         
         `)
 
-        b$(`Let me try it`, `
-        
-        Merrick pours you a shot from his mixer. For a moment, the sensation in your head and stomach make you feel you could care less that the
-        universe is ending. Also, it gave you the urps.
-        
-        `)
+        b$(`Let me try it`, () => {
+
+          p$(`
+
+          You take a sip...
+          
+          A crushing wave from the hollow of your soul emerges, rising higher and higher,
+          while Strauss' Thus Spoke Zarathustra played on hundred theremins reaches a crescendo in
+          your head...
+          
+          `)
+
+          b$('Blarrf!', () => {
+            p$(`
+            
+            You take one sip, and then another. Not bad!
+            
+            [Your overall life span has decreased by several minutes.]
+            
+            `)
+          })
+
+          b$('Huuurggg!', () => {
+            p$(`"Not perfect yet," mumbled Merrick. "Needs more absinthe and strychnine."`)
+          })
+
+          b$(`Excuse me. Can you direct me to the nearest bipedal-friendly
+          porcelain commode?`, () => {
+            p$(`Merrick slowly transforms into an enormous Kafkaesque toilet. "What did you
+            say again?" he asked. His seat and lid were acting as a tongue and mouth.`)
+          })
+
+        })
 
         b$(`It looks like scummy swamp water`, `
         

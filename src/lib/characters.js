@@ -2,7 +2,7 @@
  * @typedef CharacterType
  * @type {object}
  * @property {string} name - Character name.
- * @property {Location} location - Character location; should match the string-based identifier of a location in the game.
+ * @property {GameLocationID} location - Character location; should match the string-based identifier of a location in the game.
  * @property {function()} talk - Common character state called on talk command if no state is set.
  * @property {function() | string} talkLabel - Label text on talk button to show when character is present.
  * @property {function()} notMet - Callback to run if character has not been met yet and desc is called.

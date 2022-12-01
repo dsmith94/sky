@@ -5,7 +5,7 @@ let currentLocationName = ''
 
 /**
  * Navigate player to a new location.
- * @param {Location} location String identifier of location to navigate.
+ * @param {GameLocationID} location String identifier of location to navigate.
  */
 const go = (location) => {
 

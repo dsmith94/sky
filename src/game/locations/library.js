@@ -7,4 +7,13 @@ Game.library = () => {
     you can hear them hum ever so gently.
     
     `)
+
+    b$('Listen to the hum', `
+    
+    The hum of the crystals fills your ears with a kind of aural radiance, like Yanni
+    and Enya playing at full volume in the same room.
+    
+    `)
+
+    b$('Exit the library', () => go('city'))
 }

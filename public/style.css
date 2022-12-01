@@ -110,7 +110,7 @@ button:focus-visible {
 .buttonText {
   font-size: 1.5em;
   font-weight: 500;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 @media (prefers-color-scheme: light) {

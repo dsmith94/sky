@@ -46,7 +46,7 @@ const getLocationNames = (allTheCode) => {
   })
   return `
 /**
- * @typedef Location
+ * @typedef GameLocationID
  * @type {${loc.join('|')}}
  */
   `
