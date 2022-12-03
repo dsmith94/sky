@@ -91,19 +91,18 @@ Game.rebnah = {
     )
 
     if (c$.hasTheToken) {
-      b1$(`Read the token`, () => {
-        p$(`
+      b1$(`Read the token`, `
                   
-                  ADMIT TWO FOR COMPLIMENTARY SHOW AT SNORLAGIAN CINEMAS
+            ADMIT TWO FOR COMPLIMENTARY SHOW AT SNORLAGIAN CINEMAS
   
-                  Down below, in the fine print, you notice the token expired around ten Earth years ago.
+            Down below, in the fine print, you notice the token expired around ten Earth years ago.
   
-                  Rebnah spies you reading the token. "Not bad, huh? Sounds like a great time when you make a new friend on our 
-                  planet!" Then she leans in close. "Strictly between you and me, never date a Kevoriian. They're technically mollusks,
-                  and their ichorous secretions are poisonous to humanoids. Also, they're slimy kissers.
+            Rebnah spies you reading the token. "Not bad, huh? Sounds like a great time when you make a new friend on our 
+            planet!" Then she leans in close. "Strictly between you and me, never date a Kevoriian. They're technically mollusks,
+            and their ichorous secretions are poisonous to humanoids. Also, they're slimy kissers.
                   
-                  `)
-      })
+          `
+      )
     }
 
     done("See you later")

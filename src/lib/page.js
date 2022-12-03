@@ -3,8 +3,9 @@
  * Clear the screen. This should ordinarily never need to be called by the user.
  */
 const clearScreen = () => {
-  document.getElementById("page").innerHTML = ""
-  document.getElementById("card").innerHTML = ""
+ const e = document.getElementsByClassName('main')[0]
+ e.remove()
+ buttonCount = 0
 }
 
 /**

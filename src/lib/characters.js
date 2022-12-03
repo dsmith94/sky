@@ -17,6 +17,30 @@
  */
 const capitalize = (str) => str[0].toUpperCase() + str.slice(1)
 
+
+/**
+ * Get the number of times one button (by label name) has been tapped 
+ * during a conversation with a character.
+ * @param {label} [label] Label of button to get count from. When no label is provided, the label of the last tapped button will be used.
+ * @param {character} [character] Character to reference button tap on. If none is provided, retrieve the current conversation character.
+ * @param {state} [state] State of character conversation to referernce.
+ * @returns {number} Number of times a given button has been pressed.
+ */
+const timesPressed = (label, character, state) => {
+  if (!label) {
+    label = lastButtonPressed
+  }
+  if (!character) {
+    character = g$.isTalking
+  }
+  if (!state) {
+    state = c$.state ?? "talk"
+  }
+  const count = g$[character][state][`btn-${label}`] ?? 0
+  return count
+}
+
+
 /**
  * Get reference articles and name of character for screen printing.
  * @param {Character} [character] Optional. String identifier of character. This isn't necessary if you're talking to the character presently.

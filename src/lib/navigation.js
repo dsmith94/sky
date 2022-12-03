@@ -35,7 +35,7 @@ const go = (location) => {
 }
 
 const setState = (character, state) => {
-  const s = state ?? "_"
+  const s = state ?? "talk"
   g$[character].state = s
   if (g$.isTalking === character) {
     lastNode = g$[character][s]
