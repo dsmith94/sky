@@ -16,8 +16,22 @@
 }
 
 .main {
+  width: 90vw;
   max-width: 500px;
+  position: relative;
+  animation-name: page-in;
+  animation-duration: 0.5s;
 }
+
+
+.outPage {
+  width: 90vw;
+  max-width: 500px;
+  position: absolute;
+  animation-name: page-out;
+  animation-duration: 0.5s;
+}
+
 
 p {
   text-indent: 1em;
@@ -44,6 +58,19 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+
+
+@keyframes page-in {
+  0%   {left: 100vw;}
+  100%   {left: 0px;}
+}
+
+
+@keyframes page-out {
+  0%   {left: 5vw;}
+  100% {left: -100vw;}
+}
+
 
 h1 {
   text-indent: 0;
@@ -80,7 +107,7 @@ h3 {
   padding: 0.5em;
 }
 
-#card {
+#btns {
   padding: 2em;
 }
 
