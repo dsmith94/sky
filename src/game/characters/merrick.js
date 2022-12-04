@@ -5,14 +5,14 @@ Game.merrick = {
   
     desc: () => {
       if (!hasMet("merrick")) {
-        p$(`
+        msg(`
           
           A frat boy with no eyes and a huge antenna dressed as a scientist is busily mixing drinks at the bar.
           He appears to be very serious about what he's doing.
           
           `)
       } else {
-        p$(`
+        msg(`
           
           Merrick is here, mixing new cocktails as though his life depended on it.
           
@@ -38,9 +38,9 @@ Game.merrick = {
       )
       setName("Merrick")
 
-      b$(`What are you mixing?`, () => {
+      btn({"What are you mixing?": () => {
 
-        p$(`
+        msg(`
         
         "The greatest cocktail in the history of our time-space continuum," said Merrick with an air of mystery.
         "Perhaps, in this twilight of our existence, we shall bear witness to the last great
@@ -48,9 +48,9 @@ Game.merrick = {
         
         `)
 
-        b$(`Let me try it`, () => {
+        btn({"Let me try it": () => {
 
-          p$(`
+          msg(`
 
           You take a sip...
           
@@ -60,35 +60,34 @@ Game.merrick = {
           
           `)
 
-          b$('Blarrf!', () => {
-            p$(`
+          btn({'Blarrf!': () => {
+            msg(`
             
             You take one sip, and then another. Not bad!
             
             [Your overall life span has decreased by several minutes.]
             
             `)
-          })
+          }})
 
-          b$('Huuurggg!', () => {
-            p$(`"Not perfect yet," mumbled Merrick. "Needs more absinthe and strychnine."`)
-          })
+          btn({'Huuurggg!': () => {
+            msg(`"Not perfect yet," mumbled Merrick. "Needs more absinthe and strychnine."`)
+          }})
 
-          b$(`Excuse me. Can you direct me to the nearest bipedal-friendly
-          porcelain commode?`, () => {
-            p$(`Merrick slowly transforms into an enormous Kafkaesque toilet. "What did you
+          btn({"Excuse me. Can you direct me to the nearest bipedal-friendly porcelain commode?": () => {
+            msg(`Merrick slowly transforms into an enormous Kafkaesque toilet. "What did you
             say again?" he asked. His seat and lid were acting as a tongue and mouth.`)
-          })
+          }})
 
-        })
+        }})
 
-        b$(`It looks like scummy swamp water`, `
+        btn({"It looks like scummy swamp water": `
         
         "Wow, you're a mixologist as well?" said Merrick, obviously impressed. "Not bad."
         
-        `)
+        `})
 
-      })
+      }})
   
       done(c$.exitText)
     },

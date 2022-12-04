@@ -19,18 +19,18 @@ A typical node in a Sky JS story would look something like this:
 
 ```js
 Game.outsideShip = () => {
-    p$(`
+    msg(`
       
     Your ship lies in a crumpled heap at the top of a hill. Yates is kneeled next to an open panel, attempting repairs. A winding
     path leads down to a humble little village.
       
     `)
 
-    b$(`Hey, Yates`, () => talk("yates"))
+    btn({"Hey, Yates": () => talk("yates")})
 
-    b$(`Enter the ship`, () => go("mainDeck"))
+    btn({"Enter the ship": () => go("mainDeck")})
 
-    b$("Go down to the village", () => go("cityEntrance"))
+    btn({"Go down to the village": () => go("cityEntrance")})
 }
 ```
 
@@ -47,7 +47,7 @@ Game.yates = {
 
   _: () => {
 
-    p$(`
+    msg(`
           
         Yates is (literally) your second hand man; a 50/50 medley of robotic and organic components, cobbled into a hodge-podge of an android. 
         The bio stuff is cut-rate, to say the least, likely because he sustains every six hours or so with junk food and their abundant hydrocarbons.
@@ -58,8 +58,8 @@ Game.yates = {
           
         `)
 
-    b$("Tell me again why your name is Yates", () => {
-      p$(`
+    btn("Tell me again why your name is Yates", () => {
+      msg(`
                   
             "Actually," said Yates, "My true designation is Cybernetic Reploid model 88, or CR-88.
             My first owner called my Crazy 8's, then my next owner called
@@ -80,15 +80,15 @@ Note here that nodes (or rooms) in Sky are always functions, but characters are 
 You can learn everything Sky can do in about 14 terse commands. Learning the basic 5 gives you enough power to write a simple game.
 
 ### Basic Commands 
-* p$(text) - Print text to the screen
-* b$(label, function) - Display a button. These are shown in the order you call them.
+* msg(text) - Print text to the screen
+* btn(label, function) - Display a button. These are shown in the order you call them.
 * talk(character) - Initiate a conversation with a game character. Sky is designed to make in-game characters easy to code.
 * done(text) - Use this special button to end conversations with a character.
 * go(location) - Changes the player location. The next node will be loaded and displayed.
 
 ### Advanced Commands
 * p1$(text) - Print text to the screen, but only one time
-* b1$(label, function) - Display a button, but only one time. These are shown in the order you call them.
+* once(label, function) - Display a button, but only one time. These are shown in the order you call them.
 * setState(character, state) - Changes a character state. States allow you to state moods and conditions for your characters.
 * c$ - Character handle. You can perform direct operations on a character if you need to.
 * g$ - Game handle. You can perform direct operations on the current running game if you need to.

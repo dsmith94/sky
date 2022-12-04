@@ -8,7 +8,8 @@ let buttonCount = 0
  * @param {function} callback Callback to execute on press.
  * @param {boolean?} [unshift] If unshift value is set to true, button will be added to top of list instead of appended.
  */
-const b1$ = (label, callback, unshift) => {
+const once = (btnObj, unshift) => {
+  let label = Object.keys(btnObj)[0]
   function stringToHash() {
     var hash = 0
     if (label.length == 0) {
@@ -25,10 +26,16 @@ const b1$ = (label, callback, unshift) => {
   const id = `d${stringToHash()}`
 
   if (!g$[id]) {
-    b$(label, () => {
+    const obj = {}
+    obj[label] = () => {
       g$[id] = true
-      p$(callback)
-    }, unshift)
+      if (typeof btnObj[label] === 'function') {
+        btnObj[label]()
+      } else {
+        msg(btnObj[label])
+      }
+    }
+    btn(obj, unshift)
   }
 }
 
@@ -38,8 +45,14 @@ const b1$ = (label, callback, unshift) => {
  * @param {function} callback Callback to execute on press.
  * @param {boolean} [unshift] Optional. If unshift value is set to true, button will be added to top of list instead of appended.
  */
-const b$ = (label, callback, unshift) => {
+const btn = (btnObj, unshift) => {
   const e = document.getElementById("btns")
+  let label = ''
+  let callback = null
+  if (typeof btnObj === 'object') {
+    label = Object.keys(btnObj)[0]
+    callback = btnObj[label]
+  }
   if (e && label && callback) {
     buttonCount += 1
     label = label.trim()
@@ -48,7 +61,6 @@ const b$ = (label, callback, unshift) => {
       const buffer = document.getElementsByClassName('main')[0].innerHTML
       clearScreen()
       backButtonHidden = true
-      window.scrollTo(0, 0)
       lastButtonPressed = label
       if (g$.isTalking) {
         const state = c$?.state ?? "talk"
@@ -73,20 +85,20 @@ const b$ = (label, callback, unshift) => {
         document.body.appendChild(main)
         main.appendChild(page)
         main.appendChild(btns)
-        if (typeof callback === 'string') {
-          p$(callback)
-        } else {
+        if (typeof callback === 'function') {
           callback()
+        } else {
+          msg(callback)
         }
         if (buttonCount === 0) {
           backButtonHidden = false
         }
         if (!backButtonHidden && lastNode) {
-          b$("OK", () => {
+          btn({"➜": () => {
             if (lastNode) {
               lastNode()
             }
-          })
+          }})
         }
       }, 490)
     }

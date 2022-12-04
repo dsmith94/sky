@@ -1,6 +1,6 @@
 /** @type {LocationType} */
 Game.start = () => {
-  p$(`
+  msg(`
 
     # We Might All Die on Snorlag
     
@@ -8,11 +8,11 @@ Game.start = () => {
     
     `)
 
-  b$(`Start`, () => go("intro1"))
+  btn({"Start": () => go("intro1")})
 }
 
 Game.intro1 = () => {
-  p$(`
+  msg(`
 
     There's a sound. It's not good. Your brain, still steeped in hyper-sleep chemicals, has come round to the point
     where you're awake and something has gone woefully awry.
@@ -38,11 +38,11 @@ Game.intro1 = () => {
     
     `)
 
-  b$(`Ugghh... It's too early for an emergency...`, () => go("intro2"))
+  btn({"Ugghh... It's too early for an emergency...": () => go("intro2")})
 }
 
 Game.intro2 = () => {
-  p$(`
+  msg(`
           
     Then another sound: this one is sudden and shakes the entire ship. You grasp a bulkhead and nearly slice your fingers on
     the cheap titanium bolts holding your ship together. Another shake, like being inside a dump truck that's currently
@@ -53,11 +53,11 @@ Game.intro2 = () => {
           
     `)
 
-  b$(`Yates! What happened?`, () => go("intro3"))
+  btn({"Yates! What happened?": () => go("intro3")})
 }
 
 Game.intro3 = () => {
-  p$(`
+  msg(`
           
     "Sorry, boss," said Yates with a noisy slurp. He was drinking something. In his grip was a ginormous can of raspberry soda pop,
     festooned with a cherry-red flamingo straw.
@@ -67,5 +67,5 @@ Game.intro3 = () => {
           
     `)
 
-  b$(`Did you say two weeks?`, () => go("outsideShip"))
+  btn({"Did you say two weeks?": () => go("outsideShip")})
 }

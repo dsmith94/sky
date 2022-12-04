@@ -14,10 +14,12 @@ const go = (location) => {
       if (g$[dir].location) {
         if (currentLocationName === g$[dir].location) {
           const d = getDesc(dir)
-          const l = getTalkLabel(dir)
-          p$(d)
+          msg(d)
           if (g$[dir].talk) {
-            b$(l, () => talk(dir), true)
+            const l = getTalkLabel(dir)
+            const obj = {}
+            obj[l] = () => talk(dir)
+            btn(obj, true)
           }
         }
       }
@@ -62,16 +64,19 @@ const talk = (character) => {
  * @param {string} label Text message to display on the Done with Conversation button.
  * @param {function} [finishConversationCallback] Optional. Callback to perform some action when the conversation is finished.
  */
-const done = (label, finishConversationCallback) =>
-  b$(label, () => {
+const done = (label, finishConversationCallback) => {
+  const obj = {}
+  obj[label] = () => {
     if (finishConversationCallback) {
       finishConversationCallback()
-      b$('OK', () => {
+      btn({"➜": () => {
         go(currentLocationName)
         g$.isTalking = ""    
-      })
+      }})
     } else {
       go(currentLocationName)
       g$.isTalking = ""  
     }
-  })
+  }
+  btn(obj)
+}

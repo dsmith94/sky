@@ -3,9 +3,10 @@
  * Clear the screen. This should ordinarily never need to be called by the user.
  */
 const clearScreen = () => {
- const e = document.getElementsByClassName('main')[0]
- e.remove()
- buttonCount = 0
+  const e = document.getElementsByClassName('main')[0]
+  e.remove()
+  window.scrollTo(0, 0)
+  buttonCount = 0
 }
 
 /**
@@ -30,10 +31,10 @@ const p1$ = (showFirst, showLater) => {
   const id = `i${stringToHash()}`;
 
   if (g$[id]) {
-    p$(showLater);
+    msg(showLater);
   } else {
     g$[id] = true;
-    p$(showFirst);
+    msg(showFirst);
   }
 };
 
@@ -41,7 +42,7 @@ const p1$ = (showFirst, showLater) => {
  * Prints a message.
  * @param {string | function(): string} element Message to show. Can be either a string or a callback function retuning a string.
  */
-const p$ = (element) => {
+const msg = (element) => {
   if (typeof element === "string") {
     document.getElementById("page").innerHTML += skylight(element)
   } else if (typeof element === "function") {

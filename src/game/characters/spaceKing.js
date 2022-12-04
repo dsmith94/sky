@@ -25,7 +25,9 @@ Game.spaceKing = {
         `
     );
 
-    b1$(
+
+
+    once(
       `Never heard of you`,
       `
         
@@ -34,7 +36,7 @@ Game.spaceKing = {
         `
     );
 
-    b$(
+    btn(
       `Nice to meet you`,
       `
         
@@ -44,49 +46,51 @@ Game.spaceKing = {
         `
     );
 
-    b1$(
+    once(
       `What's the most impressive thing you've ever done?`, () => {
-        p$(`
+        msg(`
         
         Space King scratches his chin. "I could spend many of your lifetimes narrowing my finest accomplishments into a manageable form
         for the likes of you. But, here's a quick one. I once made an entirely sentient pie."
         
         `)
 
-        b$(`Did you have the moral right to create a living thing?`, () => {
-          p$(`
+        btn({
+          "Did you have the moral right to create a living thing?": () => {
+            msg(`
           
           "I don't know," responded the Space King, "But, I do know this: he was delicious."
           
           `)
+          }
         });
 
-        b$(`What kind of pie was it?`, () => {
-          p$(`
+        btn({
+          "What kind of pie was it?": () => {
+            msg(`
           
           "I already told you, it was a *sentient*—oh, you mean the filling. Banana creme, the noblest of
           all pies."
           
           `)
+          }
         });
 
       }
     );
 
     c$.preventWar &&
-      b$(
-        `So what are you doing to prevent war?`,
-        `
+      btn({
+        "So what are you doing to prevent war?": `
               
-              "Sadly, very little at the moment," said Space King, "For my rheumatism is getting the better of me right now.
-              That's why I'm standing by this lake, attempting to get some fresh air."
+        "Sadly, very little at the moment," said Space King, "For my rheumatism is getting the better of me right now.
+        That's why I'm standing by this lake, attempting to get some fresh air."
               
-              `
-      );
+      `})
 
-    b1$(`What are you doing *here* of all places?`, () => {
+    once(`What are you doing *here* of all places?`, () => {
       c$.preventWar = true;
-      p$(`
+      msg(`
         
         "A fair question," nodded Space King. “After all, why should a being of my incredible talent be relegated to dealing with such limited
         mortals?
@@ -94,23 +98,24 @@ Game.spaceKing = {
         “Well, the answer is simple. Any second, war will erupt on this planet that will engulf the universe. My role is to prevent billions
         from dying. The catastrophe about to take place is potentially greater than that of Smellus IV.”
         
-        `);
+        `)
 
-      b$(
-        "Smellus IV?",
-        `
-        
-            “Ah, Smellus IV. The indigenous creatures had no vocal cords, so their whole civilization learned to communicate with finely 
-            honed intestinal odors. In a stupendously bad bit of schedule overlap, the Great Interstellar Peace Talks on Smellus took place on
-            Taco Tuesday.
 
-            “Then, in an attempt to resume the Talks, a well-intentioned but misguided diplomat purchased an elaborate catered lunch
-            for the entire event, from Arby's.” Space King shook his head. "Tragic." 
+      btn({
+        "Smellus IV?": `
         
-        `
-      );
-    });
+        “Ah, Smellus IV. The indigenous creatures had no vocal cords, so their whole civilization learned to communicate with finely 
+        honed intestinal odors. In a stupendously bad bit of schedule overlap, the Great Interstellar Peace Talks on Smellus took place on
+        Taco Tuesday.
+
+        “Then, in an attempt to resume the Talks, a well-intentioned but misguided diplomat purchased an elaborate catered lunch
+        for the entire event, from Arby's.” Space King shook his head. "Tragic." 
+        
+      `})
+
+    })
 
     done(`A pleasure to talk to you, oh Space King`)
-  },
-};
+
+  }
+}

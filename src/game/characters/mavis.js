@@ -1,12 +1,12 @@
 
 const superMegaBlastLearningConversation = () => {
 
-    b$(`Let me try the hat!`, () => {
+    btn({"Let me try the hat!": () => {
         (timesPressed() < 2) ?
-            p$(`No!`)
+            msg(`No!`)
             :
-            p$(`OK.`)
-    })
+            msg(`OK.`)
+    }})
 
 }
 
@@ -50,7 +50,7 @@ Game.mavis = {
 
         )
 
-        b$(`Why haven't you got any books?`, () => {
+        btn({"Why haven't you got any books?": () => {
 
             if (c$.bookAskCount < 2) {
                 c$.bookAskCount += 1;
@@ -75,17 +75,17 @@ Game.mavis = {
             `
 
             )
-        })
+        }})
 
         if (c$.bookAskCount > 1) {
 
-            b$(`What's the Super MegaBlast Learning Hat?`, () => {
+            btn({"What's the Super MegaBlast Learning Hat?": () => {
 
                 c$.superMegaBlastLearning = true;
-                p$(`"I shouldn't even mention it," said Mavis, "Because even if you survive
+                msg(`"I shouldn't even mention it," said Mavis, "Because even if you survive
                 it, you'll lose everything you learned in like half an hour.`)
 
-            })
+            }})
 
         }
 

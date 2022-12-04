@@ -22,12 +22,11 @@ Game.rebnah = {
 
   desc: () => `
               
-        Rebnah the greeter hologram waves to you cheerily, which is impressive considering her vast quantity of arms. ${
-          roll(25)
-            ? `She 
+        Rebnah the greeter hologram waves to you cheerily, which is impressive considering her vast quantity of arms. ${roll(25)
+      ? `She 
               emits a thunderous snort and rubs her fantastic nose.`
-            : ""
-        }
+      : ""
+    }
               
     `,
 
@@ -54,9 +53,10 @@ Game.rebnah = {
     )
     setName("Rebnah")
 
-    b$(`Tell me about your home planet`, () => {
-      p1$(
-        `
+    btn({
+      "Tell me about your home planet": () => {
+        p1$(
+          `
         
         "Oh boy, I can't wait to tell you all about SNORLAG!" said Rebnah with breathless enthusiasm. “Though, there's not much happening right
         now. You see, the two primary species of this planet—Kevoriians and Zogtarians—are at odds with each other and they've reached a stalemate.
@@ -67,7 +67,7 @@ Game.rebnah = {
         time and space crashes in on itself.”
         
         `,
-        `
+          `
   
         “Not much happening today. The Kevoriians and Zogtarians are about to destroy us all.
         The Kevoriians have a Reality-Time Detonator, which will wipe out all life in the universe, and the Zogtarians have a Time-Reality Disruptor,
@@ -76,22 +76,21 @@ Game.rebnah = {
         “So everybody is down at the festival trying to get one last party in. I'm a hologram, so technically I never existed in the first place.”
         
         `
-      )
+        )
+      }
     })
 
-    b$(
-      `What species are you?`,
-      `
+    btn({
+      "What species are you?": `
       
       "I'm a hologram, and not designed to mimic one species per se. Actually, my physical form was designed by committee. They gave me the
       most arms ever, so I give the best hugs!" She pauses and looks down at her numerous appendages. "Though, I'll admit, finding
       compatible sweaters is a challenge."
       
-      `
-    )
+    `})
 
     if (c$.hasTheToken) {
-      b1$(`Read the token`, `
+      once(`Read the token`, `
                   
             ADMIT TWO FOR COMPLIMENTARY SHOW AT SNORLAGIAN CINEMAS
   
@@ -109,18 +108,17 @@ Game.rebnah = {
   },
 
   afterShipDestroyed: () => {
-    p$(`
+    msg(`
               
     Rebnah the greeter hologram offers a wan smile, seemingly aware that you're having a rough day.
     
     `)
 
-    b$(
-      `Do you just pop in and out of existence like that all the time?`,
-      () => {
+    btn({
+      "Do you just pop in and out of existence like that all the time?": () => {
         c$.exitText = "Well, it's been a... pleasure, I guess"
 
-        p$(`
+        msg(`
       
       "Oh no." Rebnah's gaze turned dark. "Being stored in computer memory is like torture. Imagine an eternity of suffering, never living
       but never really dying, where every inch of your person is in unimaginable pain, and your internal 
@@ -128,16 +126,14 @@ Game.rebnah = {
       
       `)
 
-        b$(
-          `That's... horrific...`,
-          `
+        btn({
+          "That's... horrific...": `
       
-      "Yeah but you get used to it."
+          "Yeah but you get used to it."
       
-      `
-        )
+          `})
       }
-    )
+    })
 
     done(c$.exitText)
   },

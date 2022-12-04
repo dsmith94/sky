@@ -1,6 +1,6 @@
 /** @type {LocationType} */
 Game.city = () => {
-    p$(`
+    msg(`
           
     A narrow metal road runs in straight paths between squat stucco buildings. The streets are deserted, though you can
     hear sounds of a party nearby. Posted over the street sign is hastily scrawled message on what appears to be
@@ -8,32 +8,32 @@ Game.city = () => {
           
     `)
   
-    roll(75) && p$(pick([
+    roll(75) && msg(pick([
       'Boom! Boom! Boom! The base from the micro-sized festival echoes down the street.',
       `You can hear what sounds like tiny screams from the festival ahead. Either people are
       depressed over the end of the universe or they're having a pretty good time.`,
       `The music peaks from the festival, followed by a small but thunderous cheer.`
     ]))
 
-    b$(`Read the hastily scrawled sign`, `
+    btn({"Read the hastily scrawled sign": `
     
-    <center>THE LAST PARTY AT THE END OF THE UNIVERSE STRAIGHT AHEAD</center>
+      <center>THE LAST PARTY AT THE END OF THE UNIVERSE STRAIGHT AHEAD</center>
 
-    Warning: pregnant women and Ungarians with live eggs should not enter compression fields.
+      Warning: pregnant women and Ungarians with live eggs should not enter compression fields.
     
-    `)
+    `})
 
   
-    b$(`Find the repair shop`, () => go("shipRepairShop"))
+    btn({"Find the repair shop": () => go("shipRepairShop")})
 
-    b$(`Enter the library`, () => go('library'))
+    btn({"Enter the library": () => go('library')})
 
-    b$(`Walk to the festival`, () => {
-      p$(`Your skin tingles a bit as you pass through a compression field and
+    btn({"Walk to the festival": () => {
+      msg(`Your skin tingles a bit as you pass through a compression field and
       are shrunk to a couple of millimeters tall
       so as to enter the venue.`)
-      b$(`Hey that tickles`, () => go("festival"))
-    })
-    b$(`Leave the village`, () => go("cityEntrance"))
+      btn({"Hey that tickles": () => go("festival")})
+    }})
+    btn({"Leave the village": () => go("cityEntrance")})
   }
   
