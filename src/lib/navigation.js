@@ -1,7 +1,6 @@
 let c$ = {}
 
 let lastNode = () => {}
-let currentLocationName = ''
 
 /**
  * Navigate player to a new location.
@@ -12,13 +11,13 @@ const go = (location) => {
   const handleLocations = () => {
     Object.keys(g$).map(dir => {
       if (g$[dir].location) {
-        if (currentLocationName === g$[dir].location) {
+        if (g$.currentLocationName === g$[dir].location) {
           const d = getDesc(dir)
           msg(d)
           if (g$[dir].talk) {
             const l = getTalkLabel(dir)
             const obj = {}
-            obj[l] = () => talk(dir)
+            obj[l] = talk(dir)
             btn(obj, true)
           }
         }
@@ -26,14 +25,15 @@ const go = (location) => {
     })
   }
 
-  backButtonHidden = true
-  currentLocationName = location
-  const callback = () => {
-    g$[location]()
-    handleLocations()
+  return () => {
+    g$.currentLocationName = location
+    const callback = () => {
+      g$[location]()
+      handleLocations()
+    }
+    callback()
+    lastNode = callback
   }
-  callback()
-  lastNode = callback
 }
 
 const setState = (character, state) => {
@@ -50,13 +50,15 @@ const setState = (character, state) => {
  * @param {Character} character String identifier of character you wish to initiate conversation.
  */
 const talk = (character) => {
-  g$.isTalking = character
-  c$ = g$[character]
-  c$.hasMet = true
-  const s = c$?.state ?? "talk"
-  backButtonHidden = true
-  g$[character][s]()
-  lastNode = g$[character][s]
+  return () => {
+    g$.isTalking = character
+    c$ = g$[character]
+    c$.hasMet = true
+    const s = c$?.state ?? "talk"
+    backButtonHidden = true
+    g$[character][s]()
+    lastNode = g$[character][s]
+  }
 }
 
 /**
@@ -69,13 +71,15 @@ const done = (label, finishConversationCallback) => {
   obj[label] = () => {
     if (finishConversationCallback) {
       finishConversationCallback()
-      btn({"➜": () => {
-        go(currentLocationName)
-        g$.isTalking = ""    
-      }})
+      btn({
+        "➜": () => {
+          go(g$.currentLocationName)()
+          g$.isTalking = ""
+        }
+      })
     } else {
-      go(currentLocationName)
-      g$.isTalking = ""  
+      go(g$.currentLocationName)()
+      g$.isTalking = ""
     }
   }
   btn(obj)

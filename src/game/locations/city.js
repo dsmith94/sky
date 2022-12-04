@@ -24,16 +24,16 @@ Game.city = () => {
     `})
 
   
-    btn({"Find the repair shop": () => go("shipRepairShop")})
+    btn({"Find the repair shop": go("shipRepairShop")})
 
-    btn({"Enter the library": () => go('library')})
+    btn({"Enter the library": go('library')})
 
     btn({"Walk to the festival": () => {
       msg(`Your skin tingles a bit as you pass through a compression field and
       are shrunk to a couple of millimeters tall
       so as to enter the venue.`)
-      btn({"Hey that tickles": () => go("festival")})
+      btn({"Hey that tickles": go("festival")})
     }})
-    btn({"Leave the village": () => go("cityEntrance")})
+    btn({"Leave the village": go("cityEntrance")})
   }
   

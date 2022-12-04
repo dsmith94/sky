@@ -12,7 +12,7 @@ Game.cockpit = () => {
   
     `)
 
-  btn({"Climb down to the Main Deck": () => go("mainDeck")})
+  btn({"Climb down to the Main Deck": go("mainDeck")})
 
   btn({"Sit in the chair": `You sit in the command chair and feel very heroic.`})
 
@@ -31,9 +31,9 @@ Game.mainDeck = () => {
       
     `)
 
-  btn({"Go to the cockpit": () => go("cockpit")})
+  btn({"Go to the cockpit": go("cockpit")})
 
-  btn({"Exit the ship": () => go("outsideShip")})
+  btn({"Exit the ship": go("outsideShip")})
 }
 
 /** @type {LocationType} */
@@ -52,7 +52,7 @@ Game.outsideShip = () => {
       'Some distant animal squawks mournfully from the valley below.',
     ]))
 
-    btn({"Hey, Yates": () => talk("yates")})
+    btn({"Hey, Yates": talk("yates")})
 
     btn({"Admire my ship": `
     
@@ -65,7 +65,7 @@ Game.outsideShip = () => {
     
     `})
 
-    btn({"Enter the ship": () => go("mainDeck")})
+    btn({"Enter the ship": go("mainDeck")})
   } else {
     msg(`
     
@@ -75,5 +75,5 @@ Game.outsideShip = () => {
     `)
   }
 
-  btn({"Go down to the village": () => go("cityEntrance")})
+  btn({"Go down to the village": go("cityEntrance")})
 }

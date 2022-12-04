@@ -32,31 +32,26 @@ Game.rebnah = {
 
   talk: () => {
     c$.hasTheToken = true
-    p1$(
-      `
+    msg([`
   
-          "Welcome, greetings, and many happy *frojniks* to you, off-worlder!" said the hologram with a smile. She wears a hat
-          with the words Ask Me About My Home Planet embroidered in large red letters.
+        "Welcome, greetings, and many happy *frojniks* to you, off-worlder!" said the hologram with a smile. She wears a hat
+        with the words Ask Me About My Home Planet embroidered in large red letters.
   
-          "I welcome you to Planet Snorlag, the friendliest world this side of Mutter's Third Arm! My name is Rebnah—pleased to meet you! I am
-          here to make sure your stay is simply Snor-tastic!"
+        "I welcome you to Planet Snorlag, the friendliest world this side of Mutter's Third Arm! My name is Rebnah—pleased to meet you! I am
+        here to make sure your stay is simply Snor-tastic!"
   
-          With a wave of her suckered hand, something cold and metallic materializes in your pocket. "Be sure to read the fine print on that token!" she said.
+        With a wave of her suckered hand, something cold and metallic materializes in your pocket. "Be sure to read the fine print on that token!" she said.
           
-          `,
-
-      `
+      `, `
           
-          Rebnah the hologram watches you with great enthusiasm. "What can I do to make your stay even more *Snor*-mazing?"
+        Rebnah the hologram watches you with great enthusiasm. "What can I do to make your stay even more *Snor*-mazing?"
           
-          `
-    )
+      `])
     setName("Rebnah")
 
-    btn({
-      "Tell me about your home planet": () => {
-        p1$(
-          `
+    btn({"Tell me about your home planet": () => {
+        
+      msg([`
         
         "Oh boy, I can't wait to tell you all about SNORLAG!" said Rebnah with breathless enthusiasm. “Though, there's not much happening right
         now. You see, the two primary species of this planet—Kevoriians and Zogtarians—are at odds with each other and they've reached a stalemate.
@@ -66,8 +61,7 @@ Game.rebnah = {
         “So there's nobody really here right now, everybody is down at the festival trying to get one last party in before all of
         time and space crashes in on itself.”
         
-        `,
-          `
+        `, `
   
         “Not much happening today. The Kevoriians and Zogtarians are about to destroy us all.
         The Kevoriians have a Reality-Time Detonator, which will wipe out all life in the universe, and the Zogtarians have a Time-Reality Disruptor,
@@ -75,13 +69,12 @@ Game.rebnah = {
         
         “So everybody is down at the festival trying to get one last party in. I'm a hologram, so technically I never existed in the first place.”
         
-        `
-        )
+        `])
+
       }
     })
 
-    btn({
-      "What species are you?": `
+    btn({"What species are you?": `
       
       "I'm a hologram, and not designed to mimic one species per se. Actually, my physical form was designed by committee. They gave me the
       most arms ever, so I give the best hugs!" She pauses and looks down at her numerous appendages. "Though, I'll admit, finding
@@ -90,7 +83,7 @@ Game.rebnah = {
     `})
 
     if (c$.hasTheToken) {
-      once(`Read the token`, `
+      once({"Read the token": `
                   
             ADMIT TWO FOR COMPLIMENTARY SHOW AT SNORLAGIAN CINEMAS
   
@@ -100,7 +93,7 @@ Game.rebnah = {
             planet!" Then she leans in close. "Strictly between you and me, never date a Kevoriian. They're technically mollusks,
             and their ichorous secretions are poisonous to humanoids. Also, they're slimy kissers.
                   
-          `
+          `}
       )
     }
 

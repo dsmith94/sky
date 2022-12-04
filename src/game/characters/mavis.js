@@ -35,20 +35,16 @@ Game.mavis = {
 
     talk: () => {
 
-        p1$(`
+        msg([`
         
         "Greetings, traveler," said the humongous brain. "My name is Mavis. I am the
         librarian of this facility."
         
-        `,
-
-            `
+        `, `
         
         "Welcome, traveler," said Mavis. "How can I guide your cerebral journeys today?" 
         
-        `
-
-        )
+        `])
 
         btn({"Why haven't you got any books?": () => {
 
@@ -56,7 +52,7 @@ Game.mavis = {
                 c$.bookAskCount += 1;
             }
 
-            p1$(`
+            msg([`
             
             "Our collection is all around you," said Mavis with a pulse of her choroid plexus.
             "Books, on paper, are archaic and wear out. We here on Snorlag consume literature
@@ -64,17 +60,13 @@ Game.mavis = {
             Though, I understand that it can be hard for a—creature, such as yourself, to engage
             with such an experience.
             
-            `,
-
-                `
+            `, `
             
             "I told you," said Mavis. "The collection exists in vibrations from the crystals,
             not pulped on dead plant life. Though, you might be able to use the Super MegaBlast
             Learning Hat.
             
-            `
-
-            )
+            `])
         }})
 
         if (c$.bookAskCount > 1) {

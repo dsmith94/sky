@@ -19,20 +19,18 @@ Game.loon = {
   `),
 
   talk: () => {
-    p1$(
-      `
+
+    msg([`
 
     "Greetings!" said the green man. His eyes focus on you intently, big and black like a housefly's. "My name is Loon. Professor Loon, zoologist!
     You're just in time!
             
-    `,
-
-      `
+    `, `
     
     "Greetings!" said Professor Loon, waving a test tube in your direction.
             
-    `
-    )
+    `])
+
     setName("Loon")
 
     once({"Just in time for what?": () => {

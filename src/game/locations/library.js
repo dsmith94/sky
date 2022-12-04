@@ -16,5 +16,5 @@ Game.library = () => {
     
     `})
 
-    btn({"Exit the library": () => go('city')})
+    btn({"Exit the library": go('city')})
 }

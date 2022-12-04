@@ -16,7 +16,7 @@ Game.nearSwamp = () => {
       ])
     )
 
-  btn({"Head towards the cave": () => go("cave")})
+  btn({"Head towards the cave": go("cave")})
 
-  btn({"Go to the clean part of the lake": () => go("lakeSide")})
+  btn({"Go to the clean part of the lake": go("lakeSide")})
 }

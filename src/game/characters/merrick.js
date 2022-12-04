@@ -21,21 +21,20 @@ Game.merrick = {
     },
   
     talk: () => {
-      p1$(
+
+      msg([
         `
 
         The frat scientist regards you very studiously. "Welcome, party-goer," he said spreading his appendages. "Welcome to the end
         of the universe. I, Merrick, am a skilled mixologist, and perhaps your last chance at a good time before it's all over."
 
               
-      `,
-  
-        `
+      `, `
       
         Merrick seems too absorbed in his laboring over the cocktail bar to give you too much attention.
               
-      `
-      )
+      `])
+      
       setName("Merrick")
 
       btn({"What are you mixing?": () => {

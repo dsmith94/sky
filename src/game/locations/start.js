@@ -8,10 +8,11 @@ Game.start = () => {
     
     `)
 
-  btn({"Start": () => go("intro1")})
+  btn({"Start": go("intro1")})
 }
 
 Game.intro1 = () => {
+
   msg(`
 
     There's a sound. It's not good. Your brain, still steeped in hyper-sleep chemicals, has come round to the point
@@ -38,7 +39,7 @@ Game.intro1 = () => {
     
     `)
 
-  btn({"Ugghh... It's too early for an emergency...": () => go("intro2")})
+  btn({"Ugghh... It's too early for an emergency...": go("intro2")})
 }
 
 Game.intro2 = () => {
@@ -53,7 +54,7 @@ Game.intro2 = () => {
           
     `)
 
-  btn({"Yates! What happened?": () => go("intro3")})
+  btn({"Yates! What happened?": go("intro3")})
 }
 
 Game.intro3 = () => {
@@ -67,5 +68,5 @@ Game.intro3 = () => {
           
     `)
 
-  btn({"Did you say two weeks?": () => go("outsideShip")})
+  btn({"Did you say two weeks?": go("outsideShip")})
 }

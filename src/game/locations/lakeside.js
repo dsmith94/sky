@@ -1,9 +1,9 @@
 /** @type {LocationType} */
 Game.lakeSide = () => {
-  const [name, a] = getName("spaceKing")
+  const [name, a, the] = getName("spaceKing")
   const talkLabel = getTalkLabel("spaceKing")
   const obj = {}
-  obj[talkLabel] = () => talk("spaceKing")
+  obj[talkLabel] = talk("spaceKing")
 
   msg(`
     
@@ -29,14 +29,14 @@ Game.lakeSide = () => {
   
     **Here He Is**
 
-    A gigantic red arrow points to {the} {name}.
+    A gigantic red arrow points to ${the} ${name}.
   
   `})
 
   btn(obj)
 
-  btn({"Climb back up towards the village": () => go("cityEntrance")})
+  btn({"Climb back up towards the village": go("cityEntrance")})
 
-  btn({"Enter the swamp": () => go("nearSwamp")})
+  btn({"Enter the swamp": go("nearSwamp")})
 
 }

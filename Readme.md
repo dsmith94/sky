@@ -26,11 +26,11 @@ Game.outsideShip = () => {
       
     `)
 
-    btn({"Hey, Yates": () => talk("yates")})
+    btn({"Hey, Yates": talk("yates")})
 
-    btn({"Enter the ship": () => go("mainDeck")})
+    btn({"Enter the ship": go("mainDeck")})
 
-    btn({"Go down to the village": () => go("cityEntrance")})
+    btn({"Go down to the village": go("cityEntrance")})
 }
 ```
 

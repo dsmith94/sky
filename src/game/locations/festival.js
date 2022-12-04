@@ -16,7 +16,7 @@ Game.festival = () => {
       ])
     )
 
-  btn({"Talk to {the} {name}": () => talk("merrick")})
+  btn({"Talk to {the} {name}": talk("merrick")})
   
   btn({"Dance with the crowd": `
 
@@ -37,6 +37,6 @@ Game.festival = () => {
   
   `})
 
-  btn({"Leave the festival": () => go("city")})
+  btn({"Leave the festival": go("city")})
 
 }

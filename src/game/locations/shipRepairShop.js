@@ -25,7 +25,7 @@ Game.shipRepairShop = () => {
       
   `})
 
-  btn({"Return to the village": () => go("city")})
+  btn({"Return to the village": go("city")})
 
 }
   

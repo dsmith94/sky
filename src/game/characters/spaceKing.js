@@ -5,7 +5,7 @@ Game.spaceKing = {
 
   talk: () => {
     setName('Space King')
-    p1$(
+    msg([
       `
         
         A man stands before you, but more than merely a man. He reminds you of a mix of Hercules and Adonis, only ten times more
@@ -16,25 +16,18 @@ Game.spaceKing = {
 
         The stars above seem to whisper "Space King" in hushed tones as he says the words.
         
-        `,
-
-      `
+      `, `
         
         Space King stands before you, clad in a magnificent chartreuse toga. He favors you with a gaze of kindly regard befitting a much lesser life form.
 
-        `
-    );
+      `])
 
-
-
-    once(
-      `Never heard of you`,
-      `
+    once({"Never heard of you": `
         
         Space King's eyes light with a kind of greenish fire that gives you a slight tremble. "Well," he said, "Like as not, I'm very important."
         
         `
-    );
+    })
 
     btn(
       `Nice to meet you`,
@@ -46,8 +39,7 @@ Game.spaceKing = {
         `
     );
 
-    once(
-      `What's the most impressive thing you've ever done?`, () => {
+    once({"What's the most impressive thing you've ever done?": () => {
         msg(`
         
         Space King scratches his chin. "I could spend many of your lifetimes narrowing my finest accomplishments into a manageable form
@@ -76,8 +68,7 @@ Game.spaceKing = {
           }
         });
 
-      }
-    );
+      }})
 
     c$.preventWar &&
       btn({
@@ -88,7 +79,7 @@ Game.spaceKing = {
               
       `})
 
-    once(`What are you doing *here* of all places?`, () => {
+    once({"What are you doing *here* of all places?": () => {
       c$.preventWar = true;
       msg(`
         
@@ -113,7 +104,7 @@ Game.spaceKing = {
         
       `})
 
-    })
+    }})
 
     done(`A pleasure to talk to you, oh Space King`)
 
