@@ -40,7 +40,13 @@ const timesPressed = (label, character, state) => {
   return count
 }
 
-
+/**
+ * Find out of word or combination of words has been used in a conversation with a character.
+ * @param {string | Array} words String or array of words to search.
+ * @param {Character} [character] Optional. String identifier of character. This isn't necessary if you're talking to the character presently.
+ * @param {string} [state] Optional. State of character. If not provided, or if wildcard character (*) all states will be searched.
+ * @return {boolean} True if word or combination of words has been used by player in conversation with character.
+ */
 const hasSaid = (words, character, state) => {
   character = (character) ? character : g$.isTalking
   state = (state) ? state : '*'

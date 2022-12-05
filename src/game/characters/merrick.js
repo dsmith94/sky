@@ -1,6 +1,7 @@
 /** @type {CharacterType} */
 Game.merrick = {
     name: "frat scientist",
+    location: "festival",
     exitText: "Uh, carry on I guess",
   
     desc: () => {
@@ -36,6 +37,14 @@ Game.merrick = {
       `])
       
       setName("Merrick")
+
+      btn({"Are you working the bar all by yourself?": `
+      
+      "To be a mixologist is to be alone," said Merrick with distinguished air. "Of course, as
+      a researcher, I have contemporaries. You may have already met Professor Loon." He sniffs.
+      "In fact, Loon is really more of a rival than any kind of close friend."
+      
+      `})
 
       btn({"What are you mixing?": () => {
 

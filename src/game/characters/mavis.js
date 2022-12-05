@@ -46,8 +46,8 @@ Game.mavis = {
             "Our collection is all around you," said Mavis with a pulse of her choroid plexus.
             "Books, on paper, are archaic and wear out. We here on Snorlag consume literature
             through subharmonic vibrations emitting from the crystals in the walls around you.
-            Though, I understand that it can be hard for a—creature, such as yourself, to engage
-            with such an experience.
+            Though, I understand how hard it can be for a limited organism like yourself 
+            to engage with such an experience.
             
             `, `
             

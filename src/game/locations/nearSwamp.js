@@ -7,8 +7,25 @@ Game.nearSwamp = () => {
           
       `)
 
+    g$.loon.location !== 'nearSwamp' &&      
+      msg(`
+      
+      On the exact spot where Loon was standing is a large metal crank in the mud
+      labeled *FORCE FIELD CONTROL*.
 
-  roll(50) &&
+      `) &
+      btn({'Turn crank': () => {
+
+        g$.caveForceFieldOff = true
+        msg(`
+        
+        The force field control is now in the off position.
+        
+        `)
+
+      }})
+
+  hasVisited() && roll(50) &&
     msg(
       pick([
         "A particularly large bubble pops, filling the air with stench.",
@@ -16,7 +33,15 @@ Game.nearSwamp = () => {
       ])
     )
 
-  btn({"Head towards the cave": go("cave")})
+  btn({"Head towards the cave": go("caveMouth", () => {
+    if ($g.caveForceFieldOff) {
+      g$.loon.location = 'nearSwamp'
+    }
+  })})
 
-  btn({"Go to the clean part of the lake": go("lakeSide")})
+  btn({"Go to the clean part of the lake": go("lakeSide", () => {
+    if ($g.caveForceFieldOff) {
+      g$.loon.location = 'nearSwamp'
+    }
+  })})
 }

@@ -39,11 +39,10 @@ const once = (btnObj, unshift) => {
   }
 }
 
+
 /**
- * Displays a button.
- * @param {string} label Label for button.
- * @param {function} callback Callback to execute on press.
- * @param {boolean} [unshift] Optional. If unshift value is set to true, button will be added to top of list instead of appended.
+ * @function
+ * @ignore
  */
 const btn = (btnObj, unshift) => {
   const e = document.getElementById("btns")

@@ -8,7 +8,7 @@ Game.city = () => {
           
     `)
   
-    roll(75) && msg(pick([
+    hasVisited() && roll(75) && msg(pick([
       'Boom! Boom! Boom! The base from the micro-sized festival echoes down the street.',
       `You can hear what sounds like tiny screams from the festival ahead. Either people are
       depressed over the end of the universe or they're having a pretty good time.`,

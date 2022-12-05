@@ -12,12 +12,13 @@ Game.cockpit = () => {
   
     `)
 
-  btn({"Climb down to the Main Deck": go("mainDeck")})
+  btn({ "Climb down to the Main Deck": go("mainDeck") })
 
-  btn({"Sit in the chair": `You sit in the command chair and feel very heroic.`})
+  btn({ "Sit in the chair": `You sit in the command chair and feel very heroic.` })
 
-  btn({"Look out the window":
-    `The purple sky and distant golden mountains don't resemble any planet you've visited before.`
+  btn({
+    "Look out the window":
+      `The purple sky and distant golden mountains don't resemble any planet you've visited before.`
   })
 }
 
@@ -31,30 +32,36 @@ Game.mainDeck = () => {
       
     `)
 
-  btn({"Go to the cockpit": go("cockpit")})
+  btn({ "Go to the cockpit": go("cockpit") })
 
-  btn({"Exit the ship": go("outsideShip")})
+  btn({ "Exit the ship": go("outsideShip") })
 }
 
 /** @type {LocationType} */
 Game.outsideShip = () => {
-  if (g$.myShip.stillHere) {
-    msg(`
+  msg(`
       
-    Your ship lies in a crumpled heap at the top of a hill. Yates is kneeled next to an open panel, attempting repairs. A winding
+    Your ship lies in a crumpled heap at the top of a hill overlooking a high cliff.
+    Yates is kneeled next to an open panel, attempting repairs. A winding
     path leads down to a humble little village.
       
     `)
 
-    roll(50) && msg(pick([
-      'A big pink cloud poofs on by over the horizon.',
-      'A gentle breeze blows peacefully.',
-      'Some distant animal squawks mournfully from the valley below.',
-    ]))
+  hasVisited() && roll(50) && msg(pick([
+    'A big pink cloud poofs on by over the horizon.',
+    'A gentle breeze blows peacefully.',
+    'Some distant animal squawks mournfully from the valley below.',
+  ]))
 
-    btn({"Hey, Yates": talk("yates")})
+  btn({"Hey, Yates": talk("yates") })
 
-    btn({"Admire my ship": `
+  btn({"Admire the view": `
+  
+  A wide sea stretches beyond the cliff's edge, sparkling in the bright crisp morning air.
+
+  `})
+
+  btn({"Assess my ship": `
     
     It's a CM6305 Talon Class Explorer ship, fitting with your job as a space explorer-for-hire. For certain, it's seen better days,
     this morning's landing not withstanding. Currently, Yates ${pick([
@@ -65,15 +72,7 @@ Game.outsideShip = () => {
     
     `})
 
-    btn({"Enter the ship": go("mainDeck")})
-  } else {
-    msg(`
-    
-    You realize now how your ship was obstructing a lovely view before it turned into a smouldering crater. All things being equal, you do
-    at least enjoy the view.
-    
-    `)
-  }
+  btn({ "Enter the ship": go("mainDeck") })
 
-  btn({"Go down to the village": go("cityEntrance")})
+  btn({ "Go down to the village": go("cityEntrance") })
 }

@@ -23,11 +23,14 @@ Game.loon = {
     msg([`
 
     "Greetings!" said the green man. His eyes focus on you intently, big and black like a housefly's. "My name is Loon. Professor Loon, zoologist!
-    You're just in time!
+    You're just in time!"
+
+    He appears to be standing directly over a large, useful-looking metal crank.
             
     `, `
     
-    "Greetings!" said Professor Loon, waving a test tube in your direction.
+    Professor Loon waves a test tube cheerfully in your direction. He appears to be standing
+    directly over a large, useful-looking metal crank.
             
     `])
 
@@ -54,6 +57,21 @@ Game.loon = {
       `})
     }})
 
+    hasSaid("Just in") && btn({"You really can't even give me a tiny hint what you're working on?": () => {
+
+      msg([`
+    
+      Loon examines you with a mischievous glint in his eye. "Two words: musical... chiggers!"
+    
+      `,`
+
+      "I fear I've said too much already," said Loon.
+      
+      `])
+
+    }})
+
+
     once({"Nice to meet you": `
     
     "Professor Thelonius Moon Loon, at your service!" He gave a fast wink. "Nice to meet a fellow adventurer. I suppose you came down in that
@@ -67,6 +85,73 @@ Game.loon = {
     if you've ever been on the Internet, you've met a few Loons."
     
     `})
+
+    btn({
+      "Hey, can I see that crank for a second?": () => {
+        
+        msg(`
+        
+        "Of course," said Loon, "Except that I can't move a muscle! Even the slightest
+        disruption could be a disaster to science!"
+
+        `)
+
+        btn({"Please? I promise I won't hurt your experiment!": `
+        
+        "Even the very *slightest* movement could ruin years of work!" cried Loon.
+        "I can't stop now, even if the universe itself were ending!"
+        
+        `})
+
+        btn({"I don't think you're going to find anything tromping in the mud anyway": `
+        
+        "Ha!" scoffed Loon. "That's what they told Jed Clampett!"
+        
+        `})
+
+        btn({"Fine. Be that way": `
+
+        "We all make sacrifices for the sake of science, my friend," nods Loon.
+        
+        `})
+
+      }})
+
+    hasMet('merrick') && hasSaid('Just in') &&
+      btn({
+        "You know, that Merrick guy at the festival seems like quite a scientist himself": () => {
+          
+          msg(`
+          
+          Loon snorts. "I can assure you, my friend, Merrick is *no* scientist of any sort."
+          
+          `)
+
+          btn({"I don't know. He seems on the edge of a breakthrough!": () => {
+
+            msg(`
+            
+            Loon suddenly appears to be very nervous. "Hmmm. Wouldn't hurt to take a break
+            and head down to the festival, I suppose. Excuse me."
+
+            He dashes off in a huff.
+
+            `)
+
+            c$.location = ""
+            done('Well OK then')
+
+          }})
+
+          btn({"If you say so": `
+          
+          "I'm not worried about competing with that so-called mixologist,"
+          said Loon with a chuckle. "We're doing actual science here."
+          
+          `})
+
+        }
+      })
 
     done("Have a good day scooping mud")
   },

@@ -2,13 +2,15 @@
 Game.festival = () => {
   msg(`
           
-    A vast crowd numbering into the millions, with every species you've ever heard of and a few you haven't, dance and drink furiously
-    for one last big hoo-hah. The music is deafening, and the crowd even more so.       
+    A vast crowd numbering into the millions, with every species you've ever
+    heard of and a few you haven't, dance and drink furiously
+    for one last big hoo-hah.
+    A repurposed shipping crate is used as the venue, and inside the compression field, you 
+    and your fellow revelers find it larger than an ampitheater.
           
     `)
-  getDesc("merrick")
 
-  roll(50) &&
+  hasVisited() && roll(50) &&
     msg(
       pick([
         "An explosion of confetti fills the air, with several colored bits landing on your face.",
@@ -16,7 +18,6 @@ Game.festival = () => {
       ])
     )
 
-  btn({"Talk to {the} {name}": talk("merrick")})
   
   btn({"Dance with the crowd": `
 

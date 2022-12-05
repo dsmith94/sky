@@ -9,9 +9,10 @@ const clearScreen = () => {
   buttonCount = 0
 }
 
+
 /**
- * Prints a message.
- * @param {string | function(): string} element Message to show. Can be either a string or a callback function retuning a string.
+ * @function
+ * @ignore
  */
 const msg = (element) => {
 

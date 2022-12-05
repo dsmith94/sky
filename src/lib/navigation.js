@@ -28,8 +28,10 @@ const go = (location) => {
   return () => {
     g$.currentLocationName = location
     const callback = () => {
+      const v = g$[location].visited ?? 0
       g$[location]()
       handleLocations()
+      g$[location].visited = v + 1
     }
     callback()
     lastNode = callback
@@ -42,6 +44,20 @@ const setState = (character, state) => {
   if (g$.isTalking === character) {
     lastNode = g$[character][s]
   }
+}
+
+
+/**
+ * Get number of times player has visited a location.
+ * @param {Location} [location] String identifier of location. If none is provided, the current location will be used.
+ * @return {number} Number of times visited.
+ */
+const hasVisited = (location) => {
+  if (!location) {
+    location = g$.currentLocationName
+  }
+  const v = g$[location].visited ?? 0
+  return v 
 }
 
 

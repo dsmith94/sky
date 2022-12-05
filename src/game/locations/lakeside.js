@@ -14,7 +14,7 @@ Game.lakeSide = () => {
 
   `)
 
-  roll(50) &&
+  hasVisited() && roll(50) &&
     msg(
       pick([
         "The wind creates soft little ripples over the lake.",
