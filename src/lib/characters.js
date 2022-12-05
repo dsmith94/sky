@@ -41,6 +41,47 @@ const timesPressed = (label, character, state) => {
 }
 
 
+const hasSaid = (words, character, state) => {
+  character = (character) ? character : g$.isTalking
+  state = (state) ? state : '*'
+
+  const searchFunction = (lst) => {
+    for (const l of lst) {
+      if (Array.isArray(words)) {
+        for (const w of words) {
+          if (l.indexOf(w) > -1) {
+            return true
+          }
+        }
+      } else {
+        if (l.indexOf(words) > -1) {
+          return true
+        }
+      }
+    }
+    return false
+  }
+
+  if (state === '*') {
+    const dirs = Object.keys(g$[character])
+    for (const k of dirs) {
+      const lst = Object.keys(g$[character][k])
+        .filter(x => typeof g$[character][k][x] === 'number')
+        .filter(x => x.indexOf('btn-') > -1)
+      if (searchFunction(lst)) {
+        return true
+      }
+    }
+  } else {
+    const lst = Object.keys(g$[character][state])
+      .filter(x => typeof x === 'function')
+      .filter(x => x.indexOf('btn-') > -1)
+    return searchFunction(lst)
+  }
+  return false
+}
+
+
 /**
  * Get reference articles and name of character for screen printing.
  * @param {Character} [character] Optional. String identifier of character. This isn't necessary if you're talking to the character presently.

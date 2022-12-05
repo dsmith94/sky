@@ -1,15 +1,4 @@
 
-const superMegaBlastLearningConversation = () => {
-
-    btn({"Let me try the hat!": () => {
-        (timesPressed() < 2) ?
-            msg(`No!`)
-            :
-            msg(`OK.`)
-    }})
-
-}
-
 /** @type {CharacterType} */
 Game.mavis = {
     name: "giant brain in a jar",
@@ -21,8 +10,8 @@ Game.mavis = {
 
     notMet: () => `
     
-    In the corner, a giant brain in a tall cylindrical jar
-    attached to a long panel of dials and lights. Beside the glass is a small
+    In the corner, a giant brain in a tall cylindrical jar stands
+    attached to a long panel of dials and lights. Beneath the glass is a small
     brass plaque which reads: "The Librarian."
     
     `,
@@ -69,6 +58,13 @@ Game.mavis = {
             `])
         }})
 
+        hasSaid('any books') && btn({"Are you sure you don''t have any books?": `
+        
+        "It's not that kind of library," said Mavis.
+        
+        `})
+
+
         if (c$.bookAskCount > 1) {
 
             btn({"What's the Super MegaBlast Learning Hat?": () => {
@@ -81,7 +77,16 @@ Game.mavis = {
 
         }
 
-        (c$.superMegaBlastLearning) && superMegaBlastLearningConversation()
+        (timesPressed("What's the Super MegaBlast Learning Hat?") > 0) && btn(
+            {
+                "Let me try the hat!": [
+                    `"You could fry your brain, human," said Mavis.`,
+                    `"I'm serious about the whole brain-frying thing," said Mavis with a growing
+                    edge in her voice.`,
+                () => {
+                    msg(`Ok, you've had it!`)
+                }
+        ]})
 
         done(c$.exitText)
 
