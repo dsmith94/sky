@@ -1,12 +1,12 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
   "name": "We Might All Die on Snorlag",
-  "short_name": "Sky",
+  "short_name": "We Might All Die on Snorlag",
   "start_url": "https://dsmith94.github.io/sky",
   "display": "standalone",
   "background_color": "#242424",
   "theme_color": "#ffffff",
-  "description": "An adventure game set (inconveniently) on Snorlag.",
+  "description": "An adventure game set (inconveniently) on the planet Snorlag.",
   "icons": [
     {
       "src": "maskable_icon.png",

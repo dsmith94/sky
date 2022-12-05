@@ -47,6 +47,14 @@ a:hover {
   color: #535bf2;
 }
 
+/*
+
+  background-image: url("back.png");
+  background-size: cover;
+
+*/
+
+
 body {
   margin: 0;
   display: flex;
@@ -59,14 +67,23 @@ body {
 
 
 @keyframes page-in {
-  0%   {transform: translate(100vw, 0vw)}
-  100%   {transform: translate(0px, 0px)}
+  0%   {
+    transform: translate(100vw, 0vw);
+    opacity: 0%;
+  }
+  100%   {
+    transform: translate(0px, 0px);
+    opacity: 100%;
+  }
 }
 
 
 @keyframes page-out {
   0%   {transform: translate(0px, 0px)}
-  100%   {transform: translate(-100vw, 0vw)}
+  100%   {
+    transform: translate(-100vw, 0vw);
+    opacity: 0%;
+  }
 }
 
 
@@ -113,8 +130,14 @@ h3 {
   text-align: center;
 }
 
+/*
+  background-color: rgba(0, 0, 0, 0.5);
+*/
 #page {
-  padding: 0.5em;
+  border-radius: 2em;
+  padding: 1.0em;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
 }
 
 #btns {
