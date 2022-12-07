@@ -19,11 +19,18 @@ const toggleMenu = () => {
           btn.innerText = g$[id].name
           btn.style = "width: 80vw;"
           btn.onclick = () => {
+            const outMenu = document.createElement("div")
+            outMenu.className = "outMenu"
+            outMenu.innerHTML = menuDiv.innerHTML
             menuShown = false
             menuDiv.remove()
             clearScreen()
             createPage()
             go(g$[id].location)()
+            document.body.appendChild(outMenu)
+            setTimeout(() => {
+              outMenu.remove()
+            }, 400)
           }
           innerMenu.appendChild(btn)
         }
@@ -36,6 +43,13 @@ const toggleMenu = () => {
     closeButton.onclick = () => {
       menuShown = false
       menuDiv.remove()
+      const outMenu = document.createElement("div")
+      outMenu.className = "outMenu"
+      outMenu.innerHTML = menuDiv.innerHTML
+      document.body.appendChild(outMenu)
+      setTimeout(() => {
+        outMenu.remove()
+      }, 400)
     }
     innerMenu.appendChild(closeButton)
     menuDiv.appendChild(innerMenu)

@@ -266,7 +266,9 @@ const addToMap = (id) => {
   }
   if (g$[id]) {
     if (g$[id].location) {
-      g$.map.push(id)
+      if (g$.map.indexOf(id) === -1) {
+        g$.map.push(id)
+      }
     }
   }
 }
