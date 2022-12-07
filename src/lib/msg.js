@@ -1,25 +1,31 @@
 
+
 /**
- * Clear the screen. This should ordinarily never need to be called by the user.
+ * Callback used if user calls msg with a function.
+ *
+ * @callback msgCallback
+ * @return {string} Returns string to be displayed on screen.
+ * 
  */
-const clearScreen = () => {
-  const e = document.getElementsByClassName('main')[0]
-  e.remove()
-  window.scrollTo(0, 0)
-  buttonCount = 0
-}
+
 
 
 /**
- * @function
- * @ignore
+ * @function msg
+ * 
+ * Display a paragraph on screen. This is the most common form of output to user.
+ * If a string or callback array is passed, the msg function will incrementally print the
+ * first element, then the next, and so on, until the last element, which will continue to be
+ * printed each time msg is called on that function. Otherwise, a callback returning a string
+ * or a string can be passed.
+ *  
+ * @param {string | msgFunction | Array<string | msgFunction>} element Content to display.
  */
 const msg = (element) => {
 
+  // private function to handle array printing in msg
   const incrementPrint = (arr) => {
-
     const showFirst = arr[0]
-
     const stringToHash = () => {
       let hash = 0
       if (showFirst.length == 0) {
@@ -32,9 +38,7 @@ const msg = (element) => {
       }
       return hash
     }
-
     const id = `i${stringToHash()}`
-
     const value = g$[id] ?? 0
     if (value) {
       msg(arr[value])
@@ -48,6 +52,8 @@ const msg = (element) => {
   }
 
 
+  // handle the rest of msg
+  // branch based on input as array, string or function
   if (Array.isArray(element)) {
     incrementPrint(element)
   } else if (typeof element === "string") {

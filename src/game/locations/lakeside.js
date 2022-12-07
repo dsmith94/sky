@@ -14,14 +14,12 @@ Game.lakeSide = () => {
 
   `)
 
-  hasVisited() && roll(50) &&
-    msg(
-      pick([
-        "The wind creates soft little ripples over the lake.",
-        "A gentle breeze blows peacefully.",
-        "Some distant animal squawks mournfully from the valley below.",
-      ])
-    )
+  env(() => roll(25) &&
+    pick([
+      "The wind creates soft little ripples over the lake.",
+      "A gentle breeze blows peacefully.",
+      "Some distant animal squawks mournfully from the valley below.",
+    ]))
 
   btn({"Read the incredible sign": `
   

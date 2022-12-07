@@ -10,13 +10,10 @@ Game.festival = () => {
           
     `)
 
-  hasVisited() && roll(50) &&
-    msg(
-      pick([
-        "An explosion of confetti fills the air, with several colored bits landing on your face.",
-        "The crowd cheers, as though someone either drank another flight or passed out.",
-      ])
-    )
+  env(() => roll(25) && pick([
+    "An explosion of confetti fills the air, with several colored bits landing on your face.",
+    "The crowd cheers, as though someone either drank another flight or passed out.",
+  ]))
 
   
   btn({"Dance with the crowd": `

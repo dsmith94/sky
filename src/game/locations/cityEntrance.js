@@ -9,7 +9,7 @@ Game.cityEntrance = () => {
         
     `)
 
-  hasVisited() && roll(50) && msg(pick([
+  env(() => roll(25) && pick([
     'A door quietly shuts somewhere beyond the wall.',
     'The wind whips just enough around the walls to produce a low, sad whistle.',
   ]))

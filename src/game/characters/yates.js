@@ -29,7 +29,7 @@ Game.yates = {
     }})
 
     btn({"Will you hurry up already?": () => {
-      setState("yates", "annoyed")
+      setState("annoyed")
       msg(`"I'm working as fast as I can," he grumbled.`)
     }})
 
@@ -52,7 +52,7 @@ Game.yates = {
     `})
 
     btn({"Thank you for working so hard, Yates": () => {
-      setState("yates", "talk")
+      setState()
       msg(`
         
         "Thanks. I'm going as fast as I can."

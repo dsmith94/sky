@@ -1,6 +1,7 @@
 {
     "include": [
-      "src/**/*.js",
+      "src/game/**/*.js",
+      "src/lib/**/*.js",
       "jsdoc/*.js"
     ]
 }

@@ -8,12 +8,12 @@ Game.city = () => {
           
     `)
   
-    hasVisited() && roll(75) && msg(pick([
-      'Boom! Boom! Boom! The base from the micro-sized festival echoes down the street.',
-      `You can hear what sounds like tiny screams from the festival ahead. Either people are
+  env(() => roll(25) && pick([
+    'Boom! Boom! Boom! The base from the micro-sized festival echoes down the street.',
+    `You can hear what sounds like tiny screams from the festival ahead. Either people are
       depressed over the end of the universe or they're having a pretty good time.`,
-      `The music peaks from the festival, followed by a small but thunderous cheer.`
-    ]))
+    `The music peaks from the festival, followed by a small but thunderous cheer.`
+  ]))
 
     btn({"Read the hastily scrawled sign": `
     

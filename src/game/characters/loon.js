@@ -4,19 +4,18 @@ Game.loon = {
   location: "nearSwamp",
   exitText: "Nice chatting with you",
 
-  notMet: () => msg(`
+  notMet: () => `
   
   A funny little green man is half sunk into the sludge, wearing a
   white laboratory cardigan and excitedly filling test tubes with 
   muck. He appears to be having a good time, at any rate.
   
-  `),
+  `,
 
-  desc: () => msg(`
-
-  Professor Loon is still here, gathering more sludge into tubes.
-  
-  `),
+  desc: {
+    "talk": `Professor Loon is still here, gathering more sludge into tubes. `,
+    "annoyed": `Professor Loon is in mud, looking very annoyed about something`
+  },
 
   talk: () => {
 
@@ -138,7 +137,8 @@ Game.loon = {
 
             `)
 
-            c$.location = ""
+            setLocation("")
+            setState("annoyed")
             done('Well OK then')
 
           }})
@@ -155,4 +155,13 @@ Game.loon = {
 
     done("Have a good day scooping mud")
   },
+  annoyed: () => {
+    msg(`
+    
+    "I'm not in the mood to chat right now," said Loon with a scowl.
+    
+    `)
+
+    done("Alrighty")
+  }
 }

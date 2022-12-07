@@ -3,7 +3,7 @@ const liveServer = require("live-server")
 const fs = require("fs")
 const chokidar = require("chokidar")
 
-const basePath = "src"
+const srcPath = "src"
 const code = {}
 
 const isDirectory = async (path) => {
@@ -53,6 +53,34 @@ const getLocationNames = (allTheCode) => {
 }
 
 
+const getValNames = (allTheCode) => {
+  const g = /getVal\((["'])[^]*?\1/
+  const s = /setVal\((["'])[^]*?\1/
+  let matches = []
+  allTheCode = allTheCode.split('\n')
+  for (const line of allTheCode) {
+    const l = line.match(s)
+    const r = line.match(g)
+    if (l) {
+      matches.push(l[0])
+    }
+    if (r) {
+      matches.push(r[0])
+    }
+  }
+  matches = matches.map(x => x.slice(8, x.length - 1)).map(x => `"${x}"`)
+  matches = [...new Set(matches)]
+  return `
+
+  /**
+ * @typedef Values
+ * @type {${matches.join('|')}}
+ */    
+  
+`
+}
+
+
 const getCharacterNames = (allTheCode) => {
   const chars = [];
   allTheCode = allTheCode.split('\n')
@@ -79,14 +107,16 @@ const getCharacterNames = (allTheCode) => {
 
 const buildCodeTree = async () => {
   try {
-    await createTree(basePath)
+    await createTree(srcPath)
     const wholeEnchilada = Object.keys(code).map(k => code[k]).join('\n')
     const locations = getLocationNames(wholeEnchilada)
     const characters = getCharacterNames(wholeEnchilada)
-    const result = UglifyJS.minify(code, { toplevel: true })
+    const values = getValNames(wholeEnchilada)
+    const result = UglifyJS.minify(code)
     const minifiedBuffer = Buffer.from(result.code)
     const locationBuffer = Buffer.from(locations)
     const characterBuffer = Buffer.from(characters)
+    const valBuffer = Buffer.from(values)
     fs.writeFile("./public/sky.min.js", minifiedBuffer, (err) => {
       if (err) {
         throw err
@@ -98,6 +128,11 @@ const buildCodeTree = async () => {
       } 
     })
     fs.writeFile("./jsdoc/characters.js", characterBuffer, (err) => {
+      if (err) {
+        throw err
+      } 
+    })
+    fs.writeFile("./jsdoc/vals.js", valBuffer, (err) => {
       if (err) {
         throw err
       } 

@@ -8,7 +8,7 @@ Game.caveMouth = () => {
     `)
 
     btn({"Enter the cave": () => {
-        if (!g$.caveForceFieldOff) {
+        if (!getVal('caveForceFieldOff')) {
             msg(`
             
             OOF! As you approach the cave, you feel drawn in by an unseen force, then

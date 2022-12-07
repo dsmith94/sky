@@ -2,9 +2,10 @@
 Game.start = () => {
   msg(`
 
-    # We Might All Die on Snorlag
+    ## Everything Ends on
+    # Snorlag
     
-    ## A game by spaceflounder
+    ### A game by spaceflounder
     
     `)
 
