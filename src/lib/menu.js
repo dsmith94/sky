@@ -1,22 +1,51 @@
-
 let menuShown = false
 
 const toggleMenu = () => {
-    if (!menuShown) {
-        const menuDiv = document.createElement("div")
-        menuDiv.className = "menu"
-        const innerMenu = document.createElement("div")
-        innerMenu.style = "max-width: 400px; display: flex; flex-direction: column; justify-content: space-evenly; align-items: center;"
-        const closeButton = document.createElement("button")
-        closeButton.style = "aspect-ratio: 1; font-size: 24pt"
-        closeButton.innerText = "🡹"
-        closeButton.onclick = () => {
+  if (!menuShown) {
+    const menuDiv = document.createElement("div")
+    menuDiv.className = "menu"
+    const innerMenu = document.createElement("div")
+    innerMenu.style = `
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    `
+    if (g$.map) {
+      g$.map.sort().map((id) => {
+        if (g$[id].location) {
+          const btn = document.createElement("button")
+          btn.innerText = g$[id].name
+          btn.style = "width: 80vw;"
+          btn.onclick = () => {
             menuShown = false
             menuDiv.remove()
+            clearScreen()
+            createPage()
+            go(g$[id].location)()
+          }
+          innerMenu.appendChild(btn)
         }
-        innerMenu.appendChild(closeButton)
-        menuDiv.appendChild(innerMenu)
-        document.body.appendChild(menuDiv)
+      })
     }
+    const closeButton = document.createElement("button")
+    closeButton.style =
+      "aspect-ratio: 1; font-size: 32pt; font-weight: bold; width: 64px; height: 64px;"
+    closeButton.innerText = "⤒"
+    closeButton.onclick = () => {
+      menuShown = false
+      menuDiv.remove()
+    }
+    innerMenu.appendChild(closeButton)
+    menuDiv.appendChild(innerMenu)
+    document.body.appendChild(menuDiv)
+  }
 }
 
+const createMenu = () => {
+  const topBar = document.createElement("div")
+  topBar.className = "topBar"
+  topBar.onclick = toggleMenu
+  document.body.appendChild(topBar)
+}

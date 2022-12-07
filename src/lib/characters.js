@@ -257,6 +257,21 @@ const hasVisited = (location) => {
 }
 
 
+const addToMap = (id) => {
+  if (!id) {
+    id = g$.isTalking
+  }
+  if (!g$.map) {
+    g$.map = []
+  }
+  if (g$[id]) {
+    if (g$[id].location) {
+      g$.map.push(id)
+    }
+  }
+}
+
+
 /**
  * Initiate new conversation with character.
  * @param {Character} character String identifier of character you wish to initiate conversation.
@@ -267,6 +282,13 @@ const talk = (character) => {
     c$ = g$[character]
     c$.hasMet = true
     const s = c$?.state ?? "talk"
+    if (g$.map) {
+      if (g$.map.indexOf(character) === -1) {
+        addToMap()
+      }
+    } else {
+      addToMap()
+    }
     g$[character][s]()
     g$.lastNode = g$[character][s]
   }

@@ -1,7 +1,6 @@
 /** @type {LocationType} */
 Game.library = () => {
-
-    msg(`
+  msg(`
     
     Golden sunlight filters in from an oculus at the top of a vast dome, which is 
     almost entirely empty. Crystals of a variety of colors line the walls, and if you listen,
@@ -9,12 +8,14 @@ Game.library = () => {
     
     `)
 
-    btn({"Listen to the hum": `
+  btn({
+    "Listen to the hum": `
     
-        The hum of the crystals fills your ears with a kind of aural radiance, like Yanni
-        and Enya playing at full volume in the same room.
+        The hum of the crystals fills your ears with a kind of aural radiance, like low-volume
+        Battle of the Bands between Enya and Yanni. 
     
-    `})
+    `,
+  })
 
-    btn({"Exit the library": go('city')})
+  btn({ "Exit the library": go("city") })
 }

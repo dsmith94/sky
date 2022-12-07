@@ -22,7 +22,6 @@
  * @param {string | msgFunction | Array<string | msgFunction>} element Content to display.
  */
 const msg = (element) => {
-
   // private function to handle array printing in msg
   const incrementPrint = (arr) => {
     const showFirst = arr[0]
@@ -42,7 +41,7 @@ const msg = (element) => {
     const value = g$[id] ?? 0
     if (value) {
       msg(arr[value])
-      if (value < (arr.length - 1)) {
+      if (value < arr.length - 1) {
         g$[id] = value + 1
       }
     } else {
@@ -51,14 +50,16 @@ const msg = (element) => {
     }
   }
 
-
   // handle the rest of msg
   // branch based on input as array, string or function
-  if (Array.isArray(element)) {
-    incrementPrint(element)
-  } else if (typeof element === "string") {
-    document.getElementById("page").innerHTML += skylight(element)
-  } else if (typeof element === "function") {
-    document.getElementById("page").innerHTML += skylight(element())
+  const page = document.getElementById("page")
+  if (page) {
+    if (Array.isArray(element)) {
+      incrementPrint(element)
+    } else if (typeof element === "string") {
+      page.innerHTML += skylight(element)
+    } else if (typeof element === "function") {
+      page.innerHTML += skylight(element())
+    }
   }
 }

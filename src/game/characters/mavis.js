@@ -24,6 +24,7 @@ Game.mavis = {
 
     talk: () => {
 
+        setName('Mavis')
         msg([`
         
         "Greetings, traveler," said the humongous brain. "My name is Mavis. I am the

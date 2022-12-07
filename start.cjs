@@ -112,7 +112,9 @@ const buildCodeTree = async () => {
     const locations = getLocationNames(wholeEnchilada)
     const characters = getCharacterNames(wholeEnchilada)
     const values = getValNames(wholeEnchilada)
-    const result = UglifyJS.minify(code)
+    const result = UglifyJS.minify(code, {
+      toplevel: true
+    })
     const minifiedBuffer = Buffer.from(result.code)
     const locationBuffer = Buffer.from(locations)
     const characterBuffer = Buffer.from(characters)

@@ -1,16 +1,14 @@
-
-
 /**
- * 
+ *
  * Create a one-time click button. Once clicked, this button will never appear
  * again on subsequent refreshes of the same node. Options argument is
  * identical to the btn function.
- * 
+ *
  * once({"Click me!": () => console.log("Clicked.")})
- * 
+ *
  * The above uses a function callback, but a string could also
  * be used just to display a quick message on screen.
- * 
+ *
  * @param {Object} options Options to create button with.
  */
 const once = (options) => {
@@ -34,7 +32,7 @@ const once = (options) => {
     const obj = {}
     obj[label] = () => {
       g$[id] = true
-      if (typeof options[label] === 'function') {
+      if (typeof options[label] === "function") {
         options[label]()
       } else {
         msg(options[label])
@@ -42,6 +40,14 @@ const once = (options) => {
     }
     btn(obj)
   }
+}
+
+// clear screen function - will be called after button is pressed
+const clearScreen = () => {
+  const e = document.getElementsByClassName("main")[0]
+  e.remove()
+  window.scrollTo(0, 0)
+  g$.buttonCount = 0
 }
 
 const style = `
@@ -71,7 +77,7 @@ button:focus-visible {
 
 `
 
-const newStyle=`
+const newStyle = `
   border-radius: 0.25em;
   border: 1px solid transparent;
   padding: 0.6em;
@@ -87,43 +93,58 @@ const newStyle=`
   transition: border-color 0.25s;
 `
 
+const createPage = () => {
+  const main = document.createElement("div")
+  const page = document.createElement("div")
+  const btns = document.createElement("btns")
+  main.className = "main"
+  main.id = "main"
+  page.className = "page"
+  page.id = "page"
+  btns.className = "btns"
+  btns.id = "btns"
+
+  // add elements to active DOM
+  document.body.appendChild(main)
+  main.appendChild(page)
+  main.appendChild(btns)
+}
+
+const handleEnv = () => {
+  if (g$.env) {
+    if (g$.isTalking || !g$.buttonCount) {
+      msg(g$.env())
+    }
+  }
+}
+
 /**
- * 
+ *
  * Create a new screen button. Buttons are added in the order that they are received.
  * Typical usage looks like:
- * 
+ *
  * btn({"Click me!": () => console.log("Clicked.")})
- * 
+ *
  * The above uses a function callback, but a string could also
  * be used just to display a quick message on screen.
- * 
- * @param {Object} options Options to create button with. 
+ *
+ * @param {Object} options Options to create button with.
  */
 const btn = (options) => {
-
   // prepare to create button
   const e = document.getElementById("btns")
-  let label = ''
+  let label = ""
   let callback = null
-  const reserved = ['unshift']
-
-  // clear screen function - will be called after button is pressed
-  const clearScreen = () => {
-    const e = document.getElementsByClassName('main')[0]
-    e.remove()
-    window.scrollTo(0, 0)
-    g$.buttonCount = 0
-  }
+  const reserved = ["unshift"]
 
   // only validate button if options object is correct
-  if (typeof options === 'object') {
-    label = Object.keys(options).filter(x => reserved.indexOf(x) === -1)[0]
+  if (typeof options === "object") {
+    label = Object.keys(options).filter((x) => reserved.indexOf(x) === -1)[0]
     callback = options[label]
   }
 
   // if we're good to go, begin button creation
   if (e && label && callback) {
-
     // button count may not exist, create it if it's not there
     if (!g$.buttonCount) {
       g$.buttonCount = 0
@@ -137,9 +158,8 @@ const btn = (options) => {
     const b = document.createElement("button")
     b.type = "button"
     b.onclick = () => {
-
       // we'll need to hang onto the current html contents, then clear screen
-      const buffer = document.getElementsByClassName('main')[0].innerHTML
+      const buffer = document.getElementsByClassName("main")[0].innerHTML
       clearScreen()
 
       // do some character cleanup
@@ -151,57 +171,32 @@ const btn = (options) => {
       }
 
       // add outgoing page animation
-      const outPage = document.createElement('div')
-      outPage.className = 'outPage'
+      const outPage = document.createElement("div")
+      outPage.className = "outPage"
+      outPage.id = "outPage"
       outPage.innerHTML = buffer
       document.body.appendChild(outPage)
 
       // halfway through animation, clear the outgoing page and begin the
       // new page transition in
       setTimeout(() => {
-
         // remove outgoing page
-        const e = document.getElementsByClassName('outPage')[0]
-        e.remove()
+        document.getElementById("outPage").remove()
+        createPage()
+        typeof callback === "function" ? callback() : msg(callback)
 
-        // create elements of new page
-        const main = document.createElement('div')
-        main.className = 'main'
-        const page = document.createElement('div')
-        page.className = 'page'
-        page.id = 'page'
-        const btns = document.createElement('btns')
-        btns.className = 'btns'
-        btns.id = 'btns'
-
-        // add elements to active DOM
-        document.body.appendChild(main)
-        main.appendChild(page)
-        main.appendChild(btns)
-
-        // determine how to handle button effect
-        // if string then pass to the msg function
-        if (typeof callback === 'function') {
-          callback()
-        } else {
-          msg(callback)
-        }
-
-        // handle the env effects
-        if (g$.env) {
-          if (g$.isTalking || !g$.buttonCount) {
-            msg(g$.env())
-          }
-        }
+        handleEnv()
 
         // if there are no buttons, and we have a valid last node to fall back on,
         // show the standard advance button
         if (!g$.buttonCount && g$.lastNode) {
-          btn({"➜": () => {
-            if (g$.lastNode) {
-              g$.lastNode()
-            }
-          }})
+          btn({
+            "➜": () => {
+              if (g$.lastNode) {
+                g$.lastNode()
+              }
+            },
+          })
         }
       }, 450)
     }
@@ -215,8 +210,9 @@ const btn = (options) => {
     } else {
       e.prepend(b)
     }
-
   } else {
-    throw `Button could not be constructed! With options: ${options}`
+    throw `Button could not be constructed! With options: ${JSON.stringify(
+      options
+    )}`
   }
 }

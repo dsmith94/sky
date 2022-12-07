@@ -29,6 +29,7 @@ const go = (location) => {
     const callback = () => {
       const v = g$[location]?.visited ?? 0
       g$.env = null
+      g$.isTalking = ''
       g$[location]()
       handleLocations()
       g$[location].visited = v + 1
