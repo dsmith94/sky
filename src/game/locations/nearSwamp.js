@@ -25,7 +25,7 @@ Game.nearSwamp = () => {
 
       }})
 
-  env(() => roll(25) && pick([
+  env(() => roll(20) && pick([
     "A particularly large bubble pops, filling the air with stench.",
     "A loud POP carries over the water as another bubble explodes.",
   ]))
