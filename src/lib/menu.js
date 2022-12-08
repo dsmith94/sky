@@ -12,8 +12,10 @@ const toggleMenu = () => {
       justify-content: flex-start;
       align-items: center;
     `
+    let m = []
     if (g$.map) {
-      g$.map.sort().map((id) => {
+      m = g$.map.sort().filter(x => g$[x]?.location !== g$.currentLocationName)
+      m.map((id) => {
         if (g$[id].location) {
           const btn = document.createElement("button")
           btn.innerText = g$[id].name
@@ -51,9 +53,11 @@ const toggleMenu = () => {
         outMenu.remove()
       }, 400)
     }
-    innerMenu.appendChild(closeButton)
-    menuDiv.appendChild(innerMenu)
-    document.body.appendChild(menuDiv)
+    if (m.length > 0) {
+      innerMenu.appendChild(closeButton)
+      menuDiv.appendChild(innerMenu)
+      document.body.appendChild(menuDiv)
+    }
   }
 }
 

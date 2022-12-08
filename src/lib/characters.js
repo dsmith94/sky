@@ -284,12 +284,11 @@ const talk = (character) => {
     c$ = g$[character]
     c$.hasMet = true
     const s = c$?.state ?? "talk"
-    if (g$.map) {
-      if (g$.map.indexOf(character) === -1) {
-        addToMap()
+    addToMap()
+    if (g$?.map?.length === 1) {
+      if (!g$.showFastTravelTip) {
+        g$.showFastTravelTip = 1
       }
-    } else {
-      addToMap()
     }
     g$[character][s]()
     g$.lastNode = g$[character][s]
@@ -319,3 +318,5 @@ const done = (label, finishConversationCallback) => {
   }
   btn(obj)
 }
+
+
