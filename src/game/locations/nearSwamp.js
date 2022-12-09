@@ -7,39 +7,46 @@ Game.nearSwamp = () => {
           
       `)
 
-    getLocation('loon') !== 'nearSwamp' &&      
-      msg(`
+  getLocation("loon") !== "nearSwamp" &&
+    msg(`
       
       On the exact spot where Loon was standing is a large metal crank in the mud
       labeled *FORCE FIELD CONTROL*.
 
       `) &
-      btn({'Turn crank': () => {
-
-        setVal('caveForceFieldOff', true)
-        msg(`
+      btn({
+        "Turn crank": () => {
+          setVal("caveForceFieldOff", true)
+          msg(`
         
         The force field control is now in the off position.
         
         `)
+        },
+      })
 
-      }})
+  env(
+    () =>
+      roll(25) &&
+      pick([
+        "A particularly large bubble pops, filling the air with stench.",
+        "A loud POP carries over the water as another bubble explodes.",
+      ])
+  )
 
-  env(() => roll(25) && pick([
-    "A particularly large bubble pops, filling the air with stench.",
-    "A loud POP carries over the water as another bubble explodes.",
-  ]))
-    
+  btn({
+    "Head towards the cave": go("caveMouth", () => {
+      if (getVal("caveForceFieldOff")) {
+        setLocation("nearSwamp", loon)
+      }
+    }),
+  })
 
-  btn({"Head towards the cave": go("caveMouth", () => {
-    if (getVal('caveForceFieldOff')) {
-      setLocation('nearSwamp', loon)
-    }
-  })})
-
-  btn({"Go to the clean part of the lake": go("lakeSide", () => {
-    if (getVal('caveForceFieldOff')) {
-      setLocation('nearSwamp', loon)
-    }
-  })})
+  btn({
+    "Go to the clean part of the lake": go("lakeSide", () => {
+      if (getVal("caveForceFieldOff")) {
+        setLocation("nearSwamp", loon)
+      }
+    }),
+  })
 }

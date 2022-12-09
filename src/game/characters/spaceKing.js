@@ -1,7 +1,20 @@
 /** @type {CharacterType} */
 Game.spaceKing = {
   preventWar: false,
-  name: 'man',
+  location: 'lakeSide',
+  name: 'very impressive man',
+
+  notMet: `
+  
+  Standing underneath the enormous sign by the water is a very impressive looking fellow.
+  
+  `,
+
+  desc: `
+  
+  Space King stands directly beneath the enormous sign, the very picture of grand magnificence.
+
+  `,
 
   talk: () => {
     setName('Space King')

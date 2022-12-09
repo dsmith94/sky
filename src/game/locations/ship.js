@@ -41,9 +41,8 @@ Game.mainDeck = () => {
 Game.outsideShip = () => {
   msg(`
       
-    Your ship lies in a crumpled heap at the top of a hill overlooking a high cliff.
-    Yates is kneeled next to an open panel, attempting repairs. A winding
-    path leads down to a humble little village.
+    In a crumpled heap, your ship lies at edge of a high cliff.
+    Far below a cluster of sun-bleached domes make up a humble village.
       
     `)
 
@@ -53,7 +52,6 @@ Game.outsideShip = () => {
     'Some distant animal squawks mournfully from the valley below.',
   ]))
 
-  btn({"Hey, Yates": talk("yates") })
 
   btn({"Admire the view": `
   
@@ -63,8 +61,8 @@ Game.outsideShip = () => {
 
   btn({"Assess my ship": `
     
-    It's a CM6305 Talon Class Explorer ship, fitting with your job as a space explorer-for-hire. For certain, it's seen better days,
-    this morning's landing not withstanding. Currently, Yates ${pick([
+    It's a CM6305 Talon Class Explorer ship, perfect for a space explorer-for-hire such as yourself. For certain, it's seen better days,
+    even before this morning's landing. Currently, Yates ${pick([
       'has coolant spilled all over the hull',
       'is tightening bolts on a rusted structural support',
       'is pulling a fuel hose from under the engine'

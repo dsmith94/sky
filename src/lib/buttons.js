@@ -33,57 +33,21 @@ const once = (options) => {
 const clearScreen = () => {
   const e = document.getElementsByClassName("main")[0]
   e.remove()
-  window.scrollTo(0, 0)
   g$.buttonCount = 0
 }
 
-const style = `
-
-button {
-  border-radius: 0.25em;
-  border: 1px solid transparent;
-  padding: 0.6em;
-  width: 100%;
-  max-width: 100%;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  display: flex;
-  text-indent: 0px;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1em;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-`
-
-const newStyle = `
-  border-radius: 0.25em;
-  border: 1px solid transparent;
-  padding: 0.6em;
-  width: 100%;
-  max-width: 100%;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  display: flex;
-  text-indent: 0px;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1em;
-  transition: border-color 0.25s;
-`
 
 const createPage = () => {
+  let topRoot = document.getElementsByClassName("topRoot")[0]
   const main = document.createElement("div")
   const page = document.createElement("div")
   const btns = document.createElement("btns")
+  if (!topRoot) {
+    topRoot = document.createElement("div")
+    topRoot.className = "topRoot"
+    document.body.appendChild(topRoot)
+  }
+  topRoot.appendChild(main)
   main.className = "main"
   main.id = "main"
   page.className = "page"
@@ -92,7 +56,7 @@ const createPage = () => {
   btns.id = "btns"
 
   // add elements to active DOM
-  document.body.appendChild(main)
+  topRoot.appendChild(main)
   main.appendChild(page)
   main.appendChild(btns)
 }
@@ -162,13 +126,17 @@ const btn = (options) => {
       outPage.className = "outPage"
       outPage.id = "outPage"
       outPage.innerHTML = buffer
-      document.body.appendChild(outPage)
+      const topRoot = document.getElementsByClassName("topRoot")[0]
+      if (topRoot) {
+        topRoot.appendChild(outPage)
+      }
 
       // halfway through animation, clear the outgoing page and begin the
       // new page transition in
       setTimeout(() => {
         // remove outgoing page
         document.getElementById("outPage").remove()
+        window.scrollTo(0, 0)
         createPage()
         typeof callback === "function" ? callback() : msg(callback)
 

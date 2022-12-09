@@ -1,16 +1,12 @@
 /** @type {LocationType} */
 Game.lakeSide = () => {
   const [name, a, the] = getName("spaceKing")
-  const talkLabel = getTalkLabel("spaceKing")
-  const obj = {}
-  obj[talkLabel] = talk("spaceKing")
 
   msg(`
     
     At the bottom of the valley by the village is a clear, blue lake. Over the lake is an enormous sign, so massive
     it cannot possibly be floating on its own but appears to be doing so effortlessly.
-    Standing directly underneath the sign, near the water, is ${a}
-    ${name}. Back up the path is the village, and not far along the shore the lake muddies into a swamp.
+    Back up the path is the village, and not far along the shore the lake muddies into a swamp.
 
   `)
 
@@ -31,7 +27,6 @@ Game.lakeSide = () => {
   
   `})
 
-  btn(obj)
 
   btn({"Climb back up towards the village": go("cityEntrance")})
 

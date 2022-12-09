@@ -1,11 +1,18 @@
 /** @type {CharacterType} */
 Game.yates = {
-  askedAboutName: false,
+  name: 'Yates',
+  location: 'outsideShip',
+  talkLabel: 'Hey, Yates',
+  hasMet: true,
+
+  desc: `
+  
+  Yates' legs are sticking out from under the wreckage as he endeavors to fix your transportation.
+  It doesn't sound promising under there.
+  
+  `,
 
   talk: () => {
-    const nameQuestion = c$.askedAboutName
-      ? "Tell me again why your name is Yates"
-      : "So, I've never asked: why are you named *Yates*?"
 
     msg(`
           
@@ -13,13 +20,11 @@ Game.yates = {
         The bio stuff is cut-rate, to say the least, likely because he sustains every six hours or so with junk food and their abundant hydrocarbons.
         Thus, he constantly smells vaguely of processed cheese dust.
     
-        Presently, he's trying to salvage what's left of your engine, landing gear, and
-        emergency seagull repellent.
+        He peers blandly at you from beneath the hull.
           
         `)
 
     btn({"Tell me again why your name is Yates": () => {
-      c$.askedAboutName = true
       msg(`
                   
             "Actually," said Yates, "My true designation is Cybernetic Reploid model 88, or CR-88.
@@ -34,14 +39,14 @@ Game.yates = {
     }})
 
     done(`Well, keep working, we've got to get off this rock`, () => {
-      msg(`Yates nods and buries himself in repair work. A shadow of paranoia crosses your mind that he may not know what he's doing.`)
+      msg(`Yates nods and buries himself in repair work. A shade of anxiety crosses your mind that he may not know what he's doing.`)
     })
   },
 
   annoyed: () => {
     msg(`
       
-      Yates glares at you as he keeps working. He seemed pretty annoyed.
+      Yates glares at you as he continues working. He seemed pretty annoyed.
       
       `)
 

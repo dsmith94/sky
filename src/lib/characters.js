@@ -97,11 +97,11 @@ const getName = (character) => {
   if (!character) {
     character = g$.isTalking
   }
-  const a = g$[character]["a"] ?? "a"
-  const the = g$[character]["the"] ?? "the"
-  const that = g$[character]["that"] ?? "that"
-  const name = g$[character]["name"] ?? "person"
-  return [name, a, the, that]
+  if (hasMet(character)) {
+    return [name, "", "", ""]
+  } else {
+    return [name, "a", "the", "that"]
+  }
 }
 
 /**
@@ -113,9 +113,6 @@ const setName = (name, character) => {
   if (!character) {
     character = g$.isTalking
   }
-  g$[character]["a"] = ""
-  g$[character]["the"] = ""
-  g$[character]["that"] = ""
   g$[character]["name"] = name
 }
 
@@ -282,7 +279,7 @@ const talk = (character) => {
   return () => {
     g$.isTalking = character
     c$ = g$[character]
-    c$.hasMet = true
+    c$["hasMet"] = true
     const s = c$?.state ?? "talk"
     addToMap()
     if (g$?.map?.length === 1) {
