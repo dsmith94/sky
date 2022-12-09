@@ -42,13 +42,12 @@ Game.spaceKing = {
         `
     })
 
-    btn({"Nice to meet you":
-        `
-        
-        "It is, isn't it," said Space King. "It is very nice to meet me, of course. I'm thinking of adding a dash to my name. You know,
-        Space-King. It sounds more grand and purposeful." His hair blows majestically in the wind.
-        
-        `
+    btn({"Nice to meet you": `
+      
+      "It is nice to meet me, isn't it?" Space King mumbles to himself. "You know, I'm thinking of adding a dash to
+      my name. You know, Space-King. It sounds more grand and purposeful." His hair blows majestically in the wind.
+      
+      `
     })
 
     once({"What's the most impressive thing you've ever done?": () => {

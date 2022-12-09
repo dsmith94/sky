@@ -12,7 +12,6 @@ Game.cockpit = () => {
   
     `)
 
-  btn({ "Climb down to the Main Deck": go("mainDeck") })
 
   btn({ "Sit in the chair": `You sit in the command chair and feel very heroic.` })
 
@@ -20,6 +19,8 @@ Game.cockpit = () => {
     "Look out the window":
       `The purple sky and distant golden mountains don't resemble any planet you've visited before.`
   })
+
+  btn({ "Climb down to the Main Deck": go("mainDeck") })
 }
 
 /** @type {LocationType} */

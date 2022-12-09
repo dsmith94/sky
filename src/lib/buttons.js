@@ -75,6 +75,9 @@ const handleEnv = () => {
  * Typical usage looks like:
  *
  * btn({"Click me!": () => console.log("Clicked.")})
+ * 
+ * -- or --
+ * 
  *
  * The above uses a function callback, but a string could also
  * be used just to display a quick message on screen.
@@ -90,8 +93,27 @@ const btn = (options) => {
 
   // only validate button if options object is correct
   if (typeof options === "object") {
-    label = Object.keys(options).filter((x) => reserved.indexOf(x) === -1)[0]
-    callback = options[label]
+    let shorthand = true
+    if (options['l']) {
+      label = options['l']
+      shorthand = false
+    }
+    if (options['label']) {
+      label = options['label']
+      shorthand = false
+    }
+    if (options['c']) {
+      callback = options['c']
+      shorthand = false
+    }
+    if (options['callback']) {
+      callback = options['callback']
+      shorthand = false
+    }
+    if (shorthand) {
+      label = Object.keys(options).filter((x) => reserved.indexOf(x) === -1)[0]
+      callback = options[label]
+    }
   }
 
   // if we're good to go, begin button creation

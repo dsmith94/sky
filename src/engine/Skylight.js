@@ -26,6 +26,30 @@ const skylight = (str, skipParagraphTags=false) => {
       }
     };
 
+    const apostropheSearch = () => {
+      const search = "'";
+      while (str.indexOf(search) > -1) {
+        str = str.replace(search, "&rsquo;");
+      }
+    }
+
+
+    const openQuoteSearch = () => {
+      const search = '"{';
+      while (str.indexOf(search) > -1) {
+        str = str.replace(search, "<q>");
+      }
+    }
+
+
+    const closeQuoteSearch = () => {
+      const search = '}"';
+      while (str.indexOf(search) > -1) {
+        str = str.replace(search, "</q>");
+      }
+    }
+
+
     const headerReplace = (search, tag) =>
       (str = str
         .split("\n")
@@ -40,9 +64,13 @@ const skylight = (str, skipParagraphTags=false) => {
     headerReplace("### ", "h3");
     headerReplace("## ", "h2");
     headerReplace("# ", "h1");
+    openQuoteSearch();
+    closeQuoteSearch();
+    searchReplace('``', "quote", "q");
     searchReplace('"', "quote", "q");
     searchReplace("**", "bold", "b");
     searchReplace("*", "italic", "i");
+    apostropheSearch();
     str = str.trim();
     return str;
   };
