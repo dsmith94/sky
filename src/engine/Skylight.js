@@ -7,6 +7,10 @@
  * @returns {string} Completed processed string.
  */
 const skylight = (str, skipParagraphTags=false) => {
+
+
+  let qLevels = 0
+
   const markup = (str) => {
     const start = {
       quote: true,
@@ -35,19 +39,30 @@ const skylight = (str, skipParagraphTags=false) => {
 
 
     const openQuoteSearch = () => {
-      const search = '"{';
+      const search = '[[';
       while (str.indexOf(search) > -1) {
-        str = str.replace(search, "<q>");
+        if (qLevels % 2 === 0) {
+          str = str.replace(search, "&ldquo;")
+        } else {
+          str = str.replace(search, "&lsquo;")
+        }
+        qLevels += 1
       }
     }
 
 
-    const closeQuoteSearch = () => {
-      const search = '}"';
-      while (str.indexOf(search) > -1) {
-        str = str.replace(search, "</q>");
+  const closeQuoteSearch = () => {
+    const search = ']]';
+    while (str.indexOf(search) > -1) {
+      qLevels -= 1
+      if (qLevels % 2 === 0) {
+        str = str.replace(search, "&rdquo;")
+      } else {
+        str = str.replace(search, "&rsquo;")
       }
     }
+  }
+
 
 
     const headerReplace = (search, tag) =>

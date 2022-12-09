@@ -27,7 +27,7 @@ Game.cockpit = () => {
 Game.mainDeck = () => {
   msg(`
       
-    This part of the ship is the least damaged—it's a pretty good thing you were here during the crash. The hyper-sleep pod is depowered,
+    This part of the ship is the least damaged—it's a pretty good thing you were in here during the crash. The hyper-sleep pod is depowered,
     along with most everything else on this deck. Yates will probably have all the systems on and off about a hundred times before
     we can limp to a repair shop.
       
