@@ -47,12 +47,14 @@ const countdown = (arr) => {
 
 /**
  * Get one random element of an array.
- * @param {Array} arr Array to pick from.
+ * @param {Array<string>} arr Array to pick from.
  * @returns {any} Random element of array.
  */
 const pick = (arr) => {
-  const newArr = [...arr]
-  const shuffled = shuffle(newArr)
-  return shuffled[0]
+  const id = `p{${stringToHash(arr.join('-'))}}`
+  if (!g$[id] || !g$[id]?.length) {
+    g$[id] = shuffle([...arr])
+  }
+  return g$[id].pop()
 }
 

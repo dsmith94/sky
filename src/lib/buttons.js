@@ -13,20 +13,7 @@
  */
 const once = (options) => {
   let label = Object.keys(options)[0]
-  function stringToHash() {
-    var hash = 0
-    if (label.length == 0) {
-      return hash
-    }
-    for (i = 0; i < label.length; i++) {
-      char = label.charCodeAt(i)
-      hash = (hash << 5) - hash + char
-      hash = hash & hash
-    }
-    return hash
-  }
-
-  const id = `d${stringToHash()}`
+  const id = `d${stringToHash(label)}`
 
   if (!g$[id]) {
     const obj = {}

@@ -3,5 +3,5 @@
       "src/game/**/*.js",
       "src/lib/**/*.js",
       "jsdoc/*.js"
-    ]
+, "src/engine/menu.js"    ]
 }
