@@ -2,8 +2,9 @@
 /** @type {CharacterType} */
 Game.mavis = {
     name: "giant brain in a jar",
-    exitText: "Thanks for your help",
     location: 'library',
+    exitText: "Thanks for your help",
+    hasMet: false,
 
     superMegaBlastLearning: false,
     bookAskCount: 0,
@@ -59,35 +60,75 @@ Game.mavis = {
             `])
         }})
 
-        hasSaid('any books') && btn({"Are you sure you don''t have any books?": `
-        
-        "It's not that kind of library," said Mavis.
-        
-        `})
+        hasSaid('any books') && btn({"Are you really a giant brain?": () => {
 
+            msg(`
+            
+            "I should hope that should be obvious..." said Mavis with an edge of annoyance.
+            "Why do you ask?"
+            
+            `)
 
-        if (c$.bookAskCount > 1) {
+            btn({"You must get asked some tough questions": () => {
 
-            btn({"What's the Super MegaBlast Learning Hat?": () => {
+                msg(`
+                
+                "Sure," said Mavis. "Mostly about the Dewey Decimal System. Nobody
+                understands the Dewey Decimal System."
+                
+                `)
 
-                c$.superMegaBlastLearning = true;
-                msg(`"I shouldn't even mention it," said Mavis, "Because even if you survive
-                it, you'll lose everything you learned in like half an hour.`)
+                btn({"So what's the hardest question you've ever been asked?": () => {
+                
+                    msg(`"Once," said Mavis, "A snotty 10 year-old Zogtarian came in and asked me a riddle.`)
+
+                    btn({"Was it what's the difference between a coffee mug and a doughnut?": `
+                    
+                    Mavis grumbled: "No, he was a Zogtarian, not a Topzoidian."
+                    
+                    `})
+
+                    btn({"Was it about how to create a fat-free Mayonnaise-replacement product that delivers on value and flavor?": `
+                    
+                    "Of course not. We'd already invented Hidden Valley dressing at that point."
+                    
+                    `})
+                
+                    btn({"What was it?": () => {
+                    
+                    msg(`"Only this," said Mavis with a serious tone, "Why is a raven like a writing desk?"`)
+
+                    btn({"That's it?": () => {
+                        
+                        setVal("writingDesk", true)
+
+                        msg(`
+
+                        Mavis chuckled. "Oh sure, it seems simple. But it even stumped the Old Man in the Cave."
+                        
+                        `)
+
+                    }})
+                    
+                    }})
+
+                }})
+
+                btn({"Do you understand the Dewey Decimal System?": `
+                
+                "Erm... Of course I do," Mavis stammered. "Don't you have something better to do then bug me?"
+                
+                `})
 
             }})
 
-        }
+            btn({"Oh, I just had to ask to be sure.": `
+            
+            "Your powers of observation have not yet ceased to amaze," said Mavis.
+            
+            `})
 
-        (timesPressed("What's the Super MegaBlast Learning Hat?") > 0) && btn(
-            {
-                "Let me try the hat!": [
-                    `"You could fry your brain, human," said Mavis.`,
-                    `"I'm serious about the whole brain-frying thing," said Mavis with a growing
-                    edge in her voice.`,
-                () => {
-                    msg(`Ok, you've had it!`)
-                }
-        ]})
+        }})
 
         done(c$.exitText)
 

@@ -98,9 +98,9 @@ const getName = (character) => {
     character = g$.isTalking
   }
   if (hasMet(character)) {
-    return [name, "", "", ""]
+    return [g$[character].name, "", "", ""]
   } else {
-    return [name, "a", "the", "that"]
+    return [g$[character].name, "a", "the", "that"]
   }
 }
 
