@@ -1,7 +1,7 @@
 :root {
   font-family: 'Libre Baskerville', Georgia, Cambria, Cochin, Times, "Times New Roman", serif;
-  font-size: 13pt;
-  line-height: 24pt;
+  font-size: large;
+  line-height: 1.5em;
   font-weight: lighter;
 
   color-scheme: light dark;
