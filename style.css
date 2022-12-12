@@ -10,12 +10,7 @@
 
 @font-face {
     font-family: 'libre_caslon_displayregular';
-    src: url('librecaslondisplay-regular-webfont.eot');
-    src: url('librecaslondisplay-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('librecaslondisplay-regular-webfont.woff2') format('woff2'),
-         url('librecaslondisplay-regular-webfont.woff') format('woff'),
-         url('librecaslondisplay-regular-webfont.ttf') format('truetype'),
-         url('librecaslondisplay-regular-webfont.svg#libre_caslon_displayregular') format('svg');
+    src: url('librecaslondisplay-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -23,12 +18,7 @@
 
 @font-face {
     font-family: 'libre_caslon_textbold';
-    src: url('librecaslontext-bold-webfont.eot');
-    src: url('librecaslontext-bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('librecaslontext-bold-webfont.woff2') format('woff2'),
-         url('librecaslontext-bold-webfont.woff') format('woff'),
-         url('librecaslontext-bold-webfont.ttf') format('truetype'),
-         url('librecaslontext-bold-webfont.svg#libre_caslon_textbold') format('svg');
+    src: url('librecaslontext-bold-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -36,12 +26,7 @@
 
 @font-face {
     font-family: 'libre_caslon_textitalic';
-    src: url('librecaslontext-italic-webfont.eot');
-    src: url('librecaslontext-italic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('librecaslontext-italic-webfont.woff2') format('woff2'),
-         url('librecaslontext-italic-webfont.woff') format('woff'),
-         url('librecaslontext-italic-webfont.ttf') format('truetype'),
-         url('librecaslontext-italic-webfont.svg#libre_caslon_textitalic') format('svg');
+    src: url('librecaslontext-italic-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -50,12 +35,7 @@
 
 @font-face {
     font-family: 'libre_caslon_textregular';
-    src: url('librecaslontext-regular-webfont.eot');
-    src: url('librecaslontext-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('librecaslontext-regular-webfont.woff2') format('woff2'),
-         url('librecaslontext-regular-webfont.woff') format('woff'),
-         url('librecaslontext-regular-webfont.ttf') format('truetype'),
-         url('librecaslontext-regular-webfont.svg#libre_caslon_textregular') format('svg');
+    src: url('librecaslontext-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
