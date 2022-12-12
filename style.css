@@ -1,4 +1,13 @@
 
+
+@font-face {
+    font-family: 'Michroma';
+    src: url('Michroma.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 @font-face {
     font-family: 'libre_caslon_displayregular';
     src: url('librecaslondisplay-regular-webfont.eot');
@@ -53,8 +62,9 @@
 }
 
 
+
 :root {
-  font-family: 'libre_caslon_textregular', Georgia, Cambria, Cochin, Times, "Times New Roman", serif;
+  font-family: 'Michroma', 'libre_caslon_textregular', Georgia, Cambria, Cochin, Times, "Times New Roman", serif;
   font-size: large;
   line-height: 1.5em;
   font-weight: lighter;
@@ -70,23 +80,53 @@
 }
 
 
-.topRoot {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  max-width: 40em;
-  min-height: 90vh;
+
+
+
+@media only screen and (max-width: 1024px) {
+
+  .topRoot {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    max-width: 60em;
+    min-height: 90vh;
+  }
+
+  .outPage {
+    animation-name: page-out;
+    animation-duration: 0.5s;
+  }
+
+}
+
+@media only screen and (min-width: 1024px) {
+
+  .topRoot {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    max-width: 40em;
+    min-height: 90vh;
+  }
+
+
 }
 
 
 .main {
-  width: 90vw;
-  max-width: 40em;
   justify-content: center;
   align-items: center;
   animation-name: page-in;
+  animation-duration: 0.5s;
+}
+
+.outPage {
+  animation-name: page-out;
   animation-duration: 0.5s;
 }
 
@@ -151,15 +191,6 @@
 }
 
 
-.outPage {
-  width: 90vw;
-  max-width: 40em;
-  justify-content: center;
-  align-items: center;
-  animation-name: page-out;
-  animation-duration: 0.5s;
-}
-
 .outMenu {
   width: 100vw;
   height: 100vh;
@@ -190,6 +221,16 @@ a {
 a:hover {
   color: #535bf2;
 }
+
+
+q:before {
+  content: open-quote;
+}
+
+q:after {
+  content: close-quote;
+}
+
 
 /*
 
@@ -335,20 +376,7 @@ button:focus-visible {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
-.console {
+h4 {
   color: white;
   text-shadow: 0px 0px 2px white;
   text-indent: 0px;
@@ -356,5 +384,5 @@ button:focus-visible {
   margin-bottom: 15px;
   font-size: 1em;
   font-weight: bold;
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
 }
