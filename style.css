@@ -38,13 +38,12 @@
     src: url('librecaslontext-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
 
 
 
 :root {
-  font-family: 'Michroma', 'libre_caslon_textregular', Georgia, Cambria, Cochin, Times, "Times New Roman", serif;
+  font-family: Georgia, Palatino, Baskerville, Cambria, Cochin, Garamond, Times, "Times New Roman", serif;
   font-size: large;
   line-height: 1.5em;
   font-weight: lighter;
@@ -57,9 +56,16 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  
 }
 
 
+@supports (font-size-adjust: 1) {
+    article {
+        font-size-adjust: 0.5;
+    }
+}
 
 
 
@@ -90,7 +96,7 @@
     justify-content: center;
     align-items: center;
     width: 100vw;
-    max-width: 40em;
+    max-width: 42em;
     min-height: 90vh;
   }
 
