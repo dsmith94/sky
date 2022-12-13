@@ -71,6 +71,7 @@ Game.outsideShip = () => {
     
     `})
 
+
   btn({ "Enter the ship": go("mainDeck") })
 
   btn({ "Go down to the village": go("cityEntrance") })

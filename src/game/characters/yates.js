@@ -7,7 +7,7 @@ Game.yates = {
 
   desc: `
   
-  Yates' legs are sticking out from under the wreckage as he endeavors to fix your transportation.
+  Yates' legs are sticking out from under the wreckage as he endeavors to fix what remains of your space-faring vessel.
   It doesn't sound promising under there.
   
   `,
@@ -33,10 +33,37 @@ Game.yates = {
         `)
     }})
 
-    btn({"Will you hurry up already?": () => {
+    btn([
+
+      {"Is it the fuel regulator?": `
+      
+      "No", said Yates, "We just replaced that only two months ago and it's brand new."
+      
+      `},
+
+      {"Is it the auxiliary coolant bypass?": `
+      
+      Yates shook his head. "No, it's still bypassing coolant just fine."
+      
+      `},
+
+      {"Is it the thermal plasma valve?": `
+      
+      "Checked that," Yates shook his head. "Works fine still."
+      
+      `},
+
+      {"Well, what else could it be?": () => { 
       setState("annoyed")
-      msg(`"I'm working as fast as I can," he grumbled.`)
-    }})
+        msg(`
+      
+        "Look," said Yates with barely restrained annoyance, "Unless you suddenly become an expert at ship repair, please go away."
+      
+        `)}
+      }
+
+    ])
+
 
     done(`Well, keep working, we've got to get off this rock`, () => {
       msg(`Yates nods and buries himself in repair work. A shade of anxiety crosses your mind that he may not know what he's doing.`)
@@ -60,7 +87,7 @@ Game.yates = {
       setState()
       msg(`
         
-        "Thanks. I'm going as fast as I can."
+        "Thanks. I'm going as fast as I can," he mumbled in between licking Raspberry Soda off the exposed engine chassis.
         
         `)
     }})

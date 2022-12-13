@@ -26,17 +26,11 @@ Game.intro1 = () => {
 
     You make out some text in screamy caps on a command display:
 
-    <div class='console'>
-    ALL SYSTEMS FAILED
-    </div>
+    #### ALL SYSTEMS FAILED
 
-    <div class='console'>
-    COLLISION WITH PLANET SNORLAG IMMINENT
-    </div>
+    #### COLLISION WITH PLANET SNORLAG IMMINENT
     
-    <div class='console'>
-    WE'RE ALL GONNA DIE!!
-    </div>
+    #### WE'RE ALL GONNA DIE!!
     
     `)
 

@@ -1,7 +1,7 @@
 {
   "name": "sky",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "An adventure on the Planet Snorlag",
   "main": "index.js",
   "scripts": {
     "start": "node start.cjs",

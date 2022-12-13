@@ -1,3 +1,5 @@
+const reserved = ["unshift"]
+
 /**
  *
  * Create a one-time click button. Once clicked, this button will never appear
@@ -12,7 +14,9 @@
  * @param {Object} options Options to create button with.
  */
 const once = (options) => {
-  let label = Object.keys(options)[0]
+  const label = Object.keys(options).filter(
+    (x) => reserved.indexOf(x) === -1
+  )[0]
   const id = `d${stringToHash(label)}`
 
   if (!g$[id]) {
@@ -35,7 +39,6 @@ const clearScreen = () => {
   e.remove()
   g$.buttonCount = 0
 }
-
 
 const createPage = () => {
   let topRoot = document.getElementsByClassName("topRoot")[0]
@@ -75,9 +78,9 @@ const handleEnv = () => {
  * Typical usage looks like:
  *
  * btn({"Click me!": () => console.log("Clicked.")})
- * 
+ *
  * -- or --
- * 
+ *
  *
  * The above uses a function callback, but a string could also
  * be used just to display a quick message on screen.
@@ -89,28 +92,40 @@ const btn = (options) => {
   const e = document.getElementById("btns")
   let label = ""
   let callback = null
-  const reserved = ["unshift"]
 
-  // only validate button if options object is correct
-  if (typeof options === "object") {
-    let shorthand = true
-    if (options['l']) {
-      label = options['l']
-      shorthand = false
+  if (Array.isArray(options)) {
+    const idl = `bta-${stringToHash(Object.keys(options).join("-"))}-l`
+    if (g$[idl] === undefined) {
+      g$[idl] = options.length - 1
     }
-    if (options['label']) {
-      label = options['label']
-      shorthand = false
+    for (let i = options.length - 2; i >= 0; i -= 1) {
+      const b = options[i]
+      if (typeof b === "object") {
+        const lbl = Object.keys(b).filter((x) => reserved.indexOf(x) === -1)[0]
+        const opt = {}
+        for (const r of reserved) {
+          opt[r] = options[r]
+        }
+        opt[lbl] = () => {
+          if (typeof b[lbl] === "function") {
+            b[lbl]()
+          } else {
+            msg(b[lbl])
+          }
+          g$[idl] -= 1
+        }
+        once(opt)
+      }
     }
-    if (options['c']) {
-      callback = options['c']
-      shorthand = false
+    if (g$[idl] === 0) {
+        const i = options.length - 1
+        const opt = { ...options[i], unshift: true }
+        btn(opt)
     }
-    if (options['callback']) {
-      callback = options['callback']
-      shorthand = false
-    }
-    if (shorthand) {
+    return
+  } else {
+    // only validate button if options object is correct
+    if (typeof options === "object") {
       label = Object.keys(options).filter((x) => reserved.indexOf(x) === -1)[0]
       callback = options[label]
     }
