@@ -8,45 +8,13 @@
 }
 
 
-@font-face {
-    font-family: 'libre_caslon_displayregular';
-    src: url('librecaslondisplay-regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-
-@font-face {
-    font-family: 'libre_caslon_textbold';
-    src: url('librecaslontext-bold-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'libre_caslon_textitalic';
-    src: url('librecaslontext-italic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
-@font-face {
-    font-family: 'libre_caslon_textregular';
-    src: url('librecaslontext-regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-
-
 :root {
   font-family: Georgia, Palatino, Baskerville, Cambria, Cochin, Garamond, Times, "Times New Roman", serif;
   font-size: large;
   line-height: 1.5em;
   font-weight: lighter;
+  margin-left: 8vw;
+  margin-right: 8vw;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -81,11 +49,6 @@
     min-height: 90vh;
   }
 
-  .outPage {
-    animation-name: page-out;
-    animation-duration: 0.5s;
-  }
-
 }
 
 @media only screen and (min-width: 1024px) {
@@ -96,10 +59,9 @@
     justify-content: center;
     align-items: center;
     width: 100vw;
-    max-width: 42em;
+    max-width: 60ch;
     min-height: 90vh;
   }
-
 
 }
 
@@ -115,6 +77,12 @@
   animation-name: page-out;
   animation-duration: 0.5s;
 }
+
+
+q {
+  quotes: "“" "”" "‘" "’";
+}
+
 
 .topBar {
   width: 100vw;
@@ -314,9 +282,7 @@ h3 {
   text-align: center;
 }
 
-/*
-  background-color: rgba(0, 0, 0, 0.5);
-*/
+
 #page {
   border-radius: 2em;
   padding: 1.0em;
@@ -359,6 +325,7 @@ button:focus-visible {
 .buttonText {
   font-size: 1.5em;
   font-weight: 500;
+  color: rgba(255, 255, 255, 0.87);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
