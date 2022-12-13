@@ -15,25 +15,25 @@ Game.city = () => {
     `The music peaks from the festival, followed by a small but thunderous cheer.`
   ]))
 
-    btn({"Read the hastily scrawled sign": `
+    btn("Read the hastily scrawled sign", `
     
       <center>THE LAST PARTY AT THE END OF THE UNIVERSE STRAIGHT AHEAD</center>
 
       Warning: pregnant women and Ungarians with live eggs should not enter compression fields.
     
-    `})
+    `)
 
   
-    btn({"Find the repair shop": go("shipRepairShop")})
+    btn("Find the repair shop", go("shipRepairShop"))
 
-    btn({"Enter the library": go('library')})
+    btn("Enter the library", go('library'))
 
-    btn({"Walk to the festival": () => {
+    btn("Walk to the festival", () => {
       msg(`Your skin tingles a bit as you pass through a compression field and
       are shrunk to a couple of millimeters tall
       so as to enter the venue.`)
-      btn({"Hey that tickles": go("festival")})
-    }})
-    btn({"Leave the village": go("cityEntrance")})
+      btn("Hey that tickles", go("festival"))
+    })
+    btn("Leave the village", go("cityEntrance"))
   }
   

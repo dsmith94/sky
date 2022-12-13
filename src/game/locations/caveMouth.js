@@ -7,7 +7,7 @@ Game.caveMouth = () => {
 
     `)
 
-    btn({"Enter the cave": () => {
+    btn("Enter the cave", () => {
         if (!getVal('caveForceFieldOff')) {
             msg(`
             
@@ -19,8 +19,8 @@ Game.caveMouth = () => {
         } else {
             go('insideCave')()
         }
-    }})
+    })
 
-  btn({"Return to the swamp": go("nearSwamp")})
+  btn("Return to the swamp", go("nearSwamp"))
 
 }

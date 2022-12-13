@@ -8,14 +8,14 @@ Game.library = () => {
     
     `)
 
-  btn({
-    "Listen to the hum": `
+  btn(
+    "Listen to the hum", `
     
         The hum of the crystals fills your ears with a kind of aural radiance, like low-volume
         Battle of the Bands between Enya and Yanni. 
     
     `,
-  })
+  )
 
-  btn({ "Exit the library": go("city") })
+  btn( "Exit the library", go("city") )
 }

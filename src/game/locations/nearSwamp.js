@@ -14,15 +14,15 @@ Game.nearSwamp = () => {
       labeled *FORCE FIELD CONTROL*.
 
       `) &
-      btn({
-        "Turn crank": () => {
+      btn(
+        "Turn crank", () => {
           setVal("caveForceFieldOff", true)
           msg(`
         
-        The force field control is now in the off position.
+          The force field control is now in the off position.
         
-        `)
-        },
+          `)
+        
       })
 
   env(
@@ -34,19 +34,19 @@ Game.nearSwamp = () => {
       ])
   )
 
-  btn({
-    "Head towards the cave": go("caveMouth", () => {
+  btn(
+    "Head towards the cave", go("caveMouth", () => {
       if (getVal("caveForceFieldOff")) {
         setLocation("nearSwamp", loon)
       }
-    }),
-  })
+    })
+  )
 
-  btn({
-    "Go to the clean part of the lake": go("lakeSide", () => {
+  btn(
+    "Go to the clean part of the lake", go("lakeSide", () => {
       if (getVal("caveForceFieldOff")) {
         setLocation("nearSwamp", loon)
       }
-    }),
-  })
+    })
+  )
 }

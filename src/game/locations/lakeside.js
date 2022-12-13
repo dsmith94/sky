@@ -17,7 +17,7 @@ Game.lakeSide = () => {
       "Some distant animal squawks mournfully from the valley below.",
     ]))
 
-  btn({"Read the incredible sign": `
+  btn("Read the incredible sign", `
   
     The vast sign says in every known language in the universe, including ✧❖➶⨇⨖⨿⩉:
   
@@ -25,11 +25,11 @@ Game.lakeSide = () => {
 
     A gigantic red arrow points to ${the} ${name}.
   
-  `})
+  `)
 
 
-  btn({"Climb back up towards the village": go("cityEntrance")})
+  btn("Climb back up towards the village", go("cityEntrance"))
 
-  btn({"Enter the swamp": go("nearSwamp")})
+  btn("Enter the swamp", go("nearSwamp"))
 
 }

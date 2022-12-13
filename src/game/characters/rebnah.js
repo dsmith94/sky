@@ -49,7 +49,7 @@ Game.rebnah = {
       `])
     setName("Rebnah")
 
-    btn({"Tell me about your home planet": () => {
+    btn("Tell me about your home planet", () => {
         
       msg([`
         
@@ -72,18 +72,18 @@ Game.rebnah = {
         `])
 
       }
-    })
+    )
 
-    btn({"What species are you?": `
+    btn("What species are you?", `
       
       "I'm a hologram, and not designed to mimic one species per se. Actually, my physical form was designed by committee. They gave me the
       most arms ever, so I give the best hugs!" She pauses and looks down at her numerous appendages. "Though, I'll admit, finding
       compatible sweaters is a challenge."
       
-    `})
+    `)
 
     if (c$.hasTheToken) {
-      once({"Read the token": `
+      once("Read the token", `
                   
             ADMIT TWO FOR COMPLIMENTARY SHOW AT SNORLAGIAN CINEMAS
   
@@ -93,7 +93,7 @@ Game.rebnah = {
             planet!" Then she leans in close. "Strictly between you and me, never date a Kevoriian. They're technically mollusks,
             and their ichorous secretions are poisonous to humanoids. Also, they're slimy kissers.
                   
-          `}
+          `
       )
     }
 
@@ -107,8 +107,8 @@ Game.rebnah = {
     
     `)
 
-    btn({
-      "Do you just pop in and out of existence like that all the time?": () => {
+    btn(
+      "Do you just pop in and out of existence like that all the time?", () => {
         c$.exitText = "Well, it's been a... pleasure, I guess"
 
         msg(`
@@ -126,7 +126,7 @@ Game.rebnah = {
       
           `})
       }
-    })
+    )
 
     done(c$.exitText)
   },

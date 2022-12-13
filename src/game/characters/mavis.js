@@ -37,7 +37,7 @@ Game.mavis = {
         
         `])
 
-        btn({"Why haven't you got any books?": () => {
+        btn("Why haven't you got any books?", () => {
 
             if (c$.bookAskCount < 2) {
                 c$.bookAskCount += 1;
@@ -58,9 +58,9 @@ Game.mavis = {
             Learning Hat.
             
             `])
-        }})
+        })
 
-        hasSaid('any books') && btn({"Are you really a giant brain?": () => {
+        hasSaid('any books') && btn("Are you really a giant brain?", () => {
 
             msg(`
             
@@ -69,7 +69,7 @@ Game.mavis = {
             
             `)
 
-            btn({"You must get asked some tough questions": () => {
+            btn("You must get asked some tough questions", () => {
 
                 msg(`
                 
@@ -78,27 +78,27 @@ Game.mavis = {
                 
                 `)
 
-                btn({"So what's the hardest question you've ever been asked?": () => {
+                btn("So what's the hardest question you've ever been asked?", () => {
                 
                     msg(`"Once," said Mavis, "A snotty 10 year-old Zogtarian came in and asked me a riddle.`)
 
-                    btn({"Was it what's the difference between a coffee mug and a doughnut?": `
+                    btn("Was it what's the difference between a coffee mug and a doughnut?", `
                     
                     Mavis grumbled: "No, he was a Zogtarian, not a Topzoidian."
                     
-                    `})
+                    `)
 
-                    btn({"Was it about how to create a fat-free Mayonnaise-replacement product that delivers on value and flavor?": `
+                    btn("Was it about how to create a fat-free Mayonnaise-replacement product that delivers on value and flavor?", `
                     
                     "Of course not. We'd already invented Hidden Valley dressing at that point."
                     
-                    `})
+                    `)
                 
-                    btn({"What was it?": () => {
+                    btn("What was it?", () => {
                     
                     msg(`"Only this," said Mavis with a serious tone, "Why is a raven like a writing desk?"`)
 
-                    btn({"That's it?": () => {
+                    btn("That's it?", () => {
                         
                         setVal("writingDesk", true)
 
@@ -108,27 +108,27 @@ Game.mavis = {
                         
                         `)
 
-                    }})
+                    })
                     
-                    }})
+                    })
 
-                }})
+                })
 
-                btn({"Do you understand the Dewey Decimal System?": `
+                btn("Do you understand the Dewey Decimal System?", `
                 
                 "Erm... Of course I do," Mavis stammered. "Don't you have something better to do then bug me?"
                 
-                `})
+                `)
 
-            }})
+            })
 
-            btn({"Oh, I just had to ask to be sure.": `
+            btn("Oh, I just had to ask to be sure.", `
             
             "Your powers of observation have not yet ceased to amaze," said Mavis.
             
-            `})
+            `)
 
-        }})
+        })
 
         done(c$.exitText)
 

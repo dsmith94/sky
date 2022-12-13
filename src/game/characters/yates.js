@@ -24,15 +24,16 @@ Game.yates = {
           
         `)
 
-    btn({"Tell me again why your name is Yates": () => {
+    btn("Tell me again why your name is Yates", () => {
       msg(`
                   
             "Actually," said Yates, "My true designation is Cybernetic Reploid model 88, or CR-88.
             My first owner called my Crazy 8's, then my next owner called
             me Eights, and finally the last one called my Yates."
         `)
-    }})
+    })
 
+    /*
     btn([
 
       {"Is it the fuel regulator?": `
@@ -63,6 +64,7 @@ Game.yates = {
       }
 
     ])
+    */
 
 
     done(`Well, keep working, we've got to get off this rock`, () => {
@@ -77,20 +79,20 @@ Game.yates = {
       
       `)
 
-    btn({"Can't you work any faster?": `
+    btn("Can't you work any faster?", `
       
       "I don't want to be stuck on this stupid planet, either," said Yates with a sour look.
       
-    `})
+    `)
 
-    btn({"Thank you for working so hard, Yates": () => {
+    btn("Thank you for working so hard, Yates", () => {
       setState()
       msg(`
         
         "Thanks. I'm going as fast as I can," he mumbled in between licking Raspberry Soda off the exposed engine chassis.
         
         `)
-    }})
+    })
 
     done(`Well, keep working, we've got to get off this rock`)
   },

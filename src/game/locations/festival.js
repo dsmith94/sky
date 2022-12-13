@@ -16,14 +16,14 @@ Game.festival = () => {
   ]))
 
   
-  btn({"Dance with the crowd": `
+  btn("Dance with the crowd", `
 
     OOF! OUCH! HMPH! Arms, tentacles, and other miscellaneous appendages
     flail into your carbon-based biology as you attempt to cut a rug.
   
-  `})
+  `)
   
-  btn({"Listen to the music": `
+  btn("Listen to the music", `
     
     It's tough to hear any lyrics, but it sounds like the ${pick([
         `3rd Movement of Parnassor the Tuneless Suicidal on the Great Ending of Everything Ever.
@@ -33,8 +33,8 @@ Game.festival = () => {
         wrote only polkas.`
     ])}
   
-  `})
+  `)
 
-  btn({"Leave the festival": go("city")})
+  btn("Leave the festival", go("city"))
 
 }

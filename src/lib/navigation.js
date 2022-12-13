@@ -12,11 +12,7 @@ const go = (location) => {
           const d = getDesc(dir)
           msg(d)
           if (g$[dir].talk) {
-            const l = getTalkLabel(dir)
-            const buttonOptions = {}
-            buttonOptions[l] = talk(dir)
-            buttonOptions.unshift = true
-            btn(buttonOptions)
+            btn(getTalkLabel(dir), talk(dir), true)
           }
         }
       }

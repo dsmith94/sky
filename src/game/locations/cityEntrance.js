@@ -14,11 +14,11 @@ Game.cityEntrance = () => {
     'The wind whips just enough around the walls to produce a low, sad whistle.',
   ]))
 
-  once({"Read the 1000 meter tall sign": `
+  once("Read the 1000 meter tall sign", `
     The writing is small, you'll have to get closer by heading towards the lake.
-  `})
+  `)
   
-  btn({"Head up the hill": go("outsideShip")})
-  btn({"Follow the path to the lake": go("lakeSide")})
-  btn({"Enter the village": go("city")})
+  btn("Head up the hill", go("outsideShip"))
+  btn("Follow the path to the lake", go("lakeSide"))
+  btn("Enter the village", go("city"))
 }

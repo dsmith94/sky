@@ -38,15 +38,15 @@ Game.merrick = {
       
       setName("Merrick")
 
-      btn({"Are you working the bar all by yourself?": `
+      btn("Are you working the bar all by yourself?", `
       
       "To be a mixologist is to be alone," said Merrick with distinguished air. "Of course, as
       a researcher, I have contemporaries. You may have already met Professor Loon." He sniffs.
       "In fact, Loon is really more of a rival than any kind of close friend."
       
-      `})
+      `)
 
-      btn({"What are you mixing?": () => {
+      btn("What are you mixing?", () => {
 
         msg(`
         
@@ -56,7 +56,7 @@ Game.merrick = {
         
         `)
 
-        btn({"Let me try it": () => {
+        btn("Let me try it",() => {
 
           msg(`
 
@@ -68,7 +68,7 @@ Game.merrick = {
           
           `)
 
-          btn({'Blarrf!': () => {
+          btn('Blarrf!', () => {
             msg(`
             
             You take one sip, and then another. Not bad!
@@ -76,26 +76,26 @@ Game.merrick = {
             [Your overall life span has decreased by several minutes.]
             
             `)
-          }})
+          })
 
-          btn({'Huuurggg!': () => {
+          btn('Huuurggg!', () => {
             msg(`"Not perfect yet," mumbled Merrick. "Needs more absinthe and strychnine."`)
-          }})
+          })
 
-          btn({"Excuse me. Can you direct me to the nearest bipedal-friendly porcelain commode?": () => {
+          btn("Excuse me. Can you direct me to the nearest bipedal-friendly porcelain commode?", () => {
             msg(`Merrick slowly transforms into an enormous Kafkaesque toilet. "What did you
             say again?" he asked. His seat and lid were acting as a tongue and mouth.`)
-          }})
+          })
 
-        }})
+        })
 
-        btn({"It looks like scummy swamp water": `
+        btn("It looks like scummy swamp water", `
         
         "Wow, you're a mixologist as well?" said Merrick, obviously impressed. "Not bad."
         
-        `})
+        `)
 
-      }})
+      })
   
       done(c$.exitText)
     },

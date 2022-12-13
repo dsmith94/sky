@@ -13,19 +13,19 @@ Game.shipRepairShop = () => {
             
   `)
     
-  btn({"Read the sign on the door": `
+  btn("Read the sign on the door", `
       
     <center>*Closed until the universe ends*</center>
 
-  `})
+  `)
     
-  btn({"Enter the repair shop": `
+  btn("Enter the repair shop", `
       
     The door is shut and locked tight.
       
-  `})
+  `)
 
-  btn({"Return to the village": go("city")})
+  btn("Return to the village", go("city"))
 
 }
   

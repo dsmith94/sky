@@ -9,7 +9,6 @@
  * @property {function()} desc - Default character description callback. Called typically by the getDesc function.
  */
 
-
 /**
  * Capitalize first character of string.
  * @param {string} str String to operate on.
@@ -17,9 +16,8 @@
  */
 const capitalize = (str) => str[0].toUpperCase() + str.slice(1)
 
-
 /**
- * Get the number of times one button (by label name) has been tapped 
+ * Get the number of times one button (by label name) has been tapped
  * during a conversation with a character.
  * @param {label} [label] Label of button to get count from. When no label is provided, the label of the last tapped button will be used.
  * @param {character} [character] Character to reference button tap on. If none is provided, retrieve the current conversation character.
@@ -48,8 +46,8 @@ const timesPressed = (label, character, state) => {
  * @return {boolean} True if word or combination of words has been used by player in conversation with character.
  */
 const hasSaid = (words, character, state) => {
-  character = (character) ? character : g$.isTalking
-  state = (state) ? state : '*'
+  character = character ? character : g$.isTalking
+  state = state ? state : "*"
 
   const searchFunction = (lst) => {
     for (const l of lst) {
@@ -68,25 +66,24 @@ const hasSaid = (words, character, state) => {
     return false
   }
 
-  if (state === '*') {
+  if (state === "*") {
     const dirs = Object.keys(g$[character])
     for (const k of dirs) {
       const lst = Object.keys(g$[character][k])
-        .filter(x => typeof g$[character][k][x] === 'number')
-        .filter(x => x.indexOf('btn-') > -1)
+        .filter((x) => typeof g$[character][k][x] === "number")
+        .filter((x) => x.indexOf("btn-") > -1)
       if (searchFunction(lst)) {
         return true
       }
     }
   } else {
     const lst = Object.keys(g$[character][state])
-      .filter(x => typeof x === 'function')
-      .filter(x => x.indexOf('btn-') > -1)
+      .filter((x) => typeof x === "function")
+      .filter((x) => x.indexOf("btn-") > -1)
     return searchFunction(lst)
   }
   return false
 }
-
 
 /**
  * Get reference articles and name of character for screen printing.
@@ -148,35 +145,32 @@ const getTalkLabel = (character) => {
   return `Talk to ${the} ${name}`
 }
 
-
 /**
- * 
+ *
  * Get location of character. If none is provided, the current focused character
  * will be used.
- * 
+ *
  * @param {Character} [character] Name of character.
  * @returns {GameLocationID} Game location identifier.
  */
 const getLocation = (character) => {
-  const c = (character) ? g$[character] : c$
+  const c = character ? g$[character] : c$
   return c.location
 }
 
-
 /**
- * 
- * Set location of character. 
+ *
+ * Set location of character.
  * If no character is provided, the current focused character
  * will be used.
- * 
+ *
  * @param {GameLocationID} location Location to place character.
  * @param {Character} [character] Character to place.
  */
 const setLocation = (location, character) => {
-  const c = (character) ? g$[character] : c$
+  const c = character ? g$[character] : c$
   c.location = location
 }
-
 
 /**
  * Gets the active description for a character.
@@ -219,12 +213,11 @@ const getDesc = (character) => {
   return g$[character]["desc"] ?? capitalize(`${the} ${name} is here.`)
 }
 
-
 /**
- * 
+ *
  * Set state of character. If no character argument is passed,
  * the current talking character is used.
- * 
+ *
  * @param {*} state New state to apply to character.
  * @param {*} character Character on which to apply new state.
  */
@@ -239,7 +232,6 @@ const setState = (state, character) => {
   }
 }
 
-
 /**
  * Get number of times player has visited a location.
  * @param {GameLocationID} [location] String identifier of location. If none is provided, the current location will be used.
@@ -250,9 +242,8 @@ const hasVisited = (location) => {
     location = g$.currentLocationName
   }
   const v = g$[location].visited ?? 0
-  return v 
+  return v
 }
-
 
 const addToMap = (id) => {
   if (!id) {
@@ -269,7 +260,6 @@ const addToMap = (id) => {
     }
   }
 }
-
 
 /**
  * Initiate new conversation with character.
@@ -302,11 +292,9 @@ const done = (label, finishConversationCallback) => {
   obj[label] = () => {
     if (finishConversationCallback) {
       finishConversationCallback()
-      btn({
-        "➜": () => {
-          go(g$.currentLocationName)()
-          g$.isTalking = ""
-        }
+      btn("➜", () => {
+        go(g$.currentLocationName)()
+        g$.isTalking = ""
       })
     } else {
       go(g$.currentLocationName)()
@@ -315,5 +303,3 @@ const done = (label, finishConversationCallback) => {
   }
   btn(obj)
 }
-
-

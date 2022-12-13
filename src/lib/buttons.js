@@ -1,18 +1,4 @@
-const reserved = ["unshift"]
 
-/**
- *
- * Create a one-time click button. Once clicked, this button will never appear
- * again on subsequent refreshes of the same node. Options argument is
- * identical to the btn function.
- *
- * once({"Click me!": () => console.log("Clicked.")})
- *
- * The above uses a function callback, but a string could also
- * be used just to display a quick message on screen.
- *
- * @param {Object} options Options to create button with.
- */
 const once = (options) => {
   const label = Object.keys(options).filter(
     (x) => reserved.indexOf(x) === -1
@@ -20,16 +6,14 @@ const once = (options) => {
   const id = `d${stringToHash(label)}`
 
   if (!g$[id]) {
-    const obj = {}
-    obj[label] = () => {
+    btn(label, () => {
       g$[id] = true
       if (typeof options[label] === "function") {
         options[label]()
       } else {
         msg(options[label])
       }
-    }
-    btn(obj)
+    })
   }
 }
 
@@ -72,27 +56,11 @@ const handleEnv = () => {
   }
 }
 
-/**
- *
- * Create a new screen button. Buttons are added in the order that they are received.
- * Typical usage looks like:
- *
- * btn({"Click me!": () => console.log("Clicked.")})
- *
- * -- or --
- *
- *
- * The above uses a function callback, but a string could also
- * be used just to display a quick message on screen.
- *
- * @param {Object} options Options to create button with.
- */
-const btn = (options) => {
+const btn = (label, callback, unshift) => {
   // prepare to create button
   const e = document.getElementById("btns")
-  let label = ""
-  let callback = null
 
+  /*
   if (Array.isArray(options)) {
     const idl = `bta-${stringToHash(Object.keys(options).join("-"))}-l`
     if (g$[idl] === undefined) {
@@ -130,6 +98,7 @@ const btn = (options) => {
       callback = options[label]
     }
   }
+  */
 
   // if we're good to go, begin button creation
   if (e && label && callback) {
@@ -182,12 +151,10 @@ const btn = (options) => {
         // if there are no buttons, and we have a valid last node to fall back on,
         // show the standard advance button
         if (!g$.buttonCount && g$.lastNode) {
-          btn({
-            "➜": () => {
-              if (g$.lastNode) {
-                g$.lastNode()
-              }
-            },
+          btn("➜", () => {
+            if (g$.lastNode) {
+              g$.lastNode()
+            }
           })
         }
       }, 450)
@@ -196,15 +163,12 @@ const btn = (options) => {
     // finalize new button and determine where to add it respective to other buttons
     b.className = "button"
     b.innerHTML = `<div class='buttonText'>${skylight(label, true)}</div>`
-    const unshift = options.unshift
     if (!unshift) {
       e.appendChild(b)
     } else {
       e.prepend(b)
     }
   } else {
-    throw `Button could not be constructed! With options: ${JSON.stringify(
-      options
-    )}`
+    throw `Button could not be constructed! With options: ${label}`
   }
 }

@@ -12,15 +12,18 @@ Game.cockpit = () => {
   
     `)
 
+  btn("Sit in the chair", `You sit in the command chair and feel very heroic.`)
 
-  btn({ "Sit in the chair": `You sit in the command chair and feel very heroic.` })
+  btn(
+    "Look out the window",
+    `
+  
+    The purple sky and distant golden mountains don't resemble any planet you've visited before.
+  
+  `
+  )
 
-  btn({
-    "Look out the window":
-      `The purple sky and distant golden mountains don't resemble any planet you've visited before.`
-  })
-
-  btn({ "Climb down to the Main Deck": go("mainDeck") })
+  btn("Climb down to the Main Deck", go("mainDeck"))
 }
 
 /** @type {LocationType} */
@@ -33,9 +36,9 @@ Game.mainDeck = () => {
       
     `)
 
-  btn({ "Go to the cockpit": go("cockpit") })
+  btn("Go to the cockpit", go("cockpit"))
 
-  btn({ "Exit the ship": go("outsideShip") })
+  btn("Exit the ship", go("outsideShip"))
 }
 
 /** @type {LocationType} */
@@ -47,32 +50,39 @@ Game.outsideShip = () => {
       
     `)
 
-  hasVisited() && roll(50) && msg(pick([
-    'A big pink cloud poofs on by over the horizon.',
-    'A gentle breeze blows peacefully.',
-    'Some distant animal squawks mournfully from the valley below.',
-  ]))
+  hasVisited() &&
+    roll(50) &&
+    msg(
+      pick([
+        "A big pink cloud poofs on by over the horizon.",
+        "A gentle breeze blows peacefully.",
+        "Some distant animal squawks mournfully from the valley below.",
+      ])
+    )
 
-
-  btn({"Admire the view": `
+  btn(
+    "Admire the view",
+    `
   
-  A wide sea stretches beyond the cliff's edge, sparkling in the bright crisp morning air.
+    A wide sea stretches beyond the cliff's edge, sparkling in the bright crisp morning air.
 
-  `})
+    `
+  )
 
-  btn({"Assess my ship": `
-    
-    It's a CM6305 Talon Class Explorer ship, perfect for a space explorer-for-hire such as yourself. For certain, it's seen better days,
+  btn(
+    "Assess my ship",
+    `
+    It's a CM6305 Talon Class Explorer ship, fitting for a space explorer-for-hire such as yourself. For certain, it's seen better days,
     even before this morning's landing. Currently, Yates ${pick([
-      'has coolant spilled all over the hull',
-      'is tightening bolts on a rusted structural support',
-      'is pulling a fuel hose from under the engine'
+      "has coolant spilled all over the hull",
+      "is tightening bolts on a rusted structural support",
+      "is pulling a fuel hose from under the engine",
     ])}.
     
-    `})
+    `
+  )
 
+  btn("Enter the ship", go("mainDeck"))
 
-  btn({ "Enter the ship": go("mainDeck") })
-
-  btn({ "Go down to the village": go("cityEntrance") })
+  btn("Go down to the village", go("cityEntrance"))
 }
