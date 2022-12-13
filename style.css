@@ -10,8 +10,6 @@
 
 :root {
   font-family: Georgia, Palatino, Baskerville, Cambria, Cochin, Garamond, Times, "Times New Roman", serif;
-  font-size: large;
-  line-height: 1.5em;
   font-weight: lighter;
   margin-left: 8vw;
   margin-right: 8vw;
@@ -44,6 +42,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-size: large;
+    line-height: 1.5em;
     width: 100vw;
     max-width: 60em;
     min-height: 90vh;
@@ -58,6 +58,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-size: xx-large;
+    line-height: 1.5em;
     width: 100vw;
     max-width: 60ch;
     min-height: 90vh;
