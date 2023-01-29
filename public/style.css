@@ -189,11 +189,13 @@ q:after {
 
 
 /*
-
   background-image: url("back.png");
-  background-size: cover;
-
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: contain;
 */
+
 
 
 body {

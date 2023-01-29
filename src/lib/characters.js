@@ -288,8 +288,8 @@ const talk = (character) => {
  * @param {function} [finishConversationCallback] Optional. Callback to perform some action when the conversation is finished.
  */
 const done = (label, finishConversationCallback) => {
-  const obj = {}
-  obj[label] = () => {
+  //const obj = {}
+  const callback = () => {
     if (finishConversationCallback) {
       finishConversationCallback()
       btn("➜", () => {
@@ -301,5 +301,5 @@ const done = (label, finishConversationCallback) => {
       g$.isTalking = ""
     }
   }
-  btn(obj)
+  btn(label, callback)
 }

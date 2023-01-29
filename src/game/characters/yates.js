@@ -33,38 +33,46 @@ Game.yates = {
         `)
     })
 
-    /*
-    btn([
+    stack([
 
-      {"Is it the fuel regulator?": `
+      ["Can't you work any faster?", [`
+      
+      "I'm working as fast as I can", he grumbled.
+      
+      `, `
+      
+      Yates glares at you angrily.
+      
+      `]],
+
+      ["Is it the fuel regulator?", `
       
       "No", said Yates, "We just replaced that only two months ago and it's brand new."
       
-      `},
+      `],
 
-      {"Is it the auxiliary coolant bypass?": `
+      ["Is it the auxiliary coolant bypass?", `
       
       Yates shook his head. "No, it's still bypassing coolant just fine."
       
-      `},
+      `],
 
-      {"Is it the thermal plasma valve?": `
+      ["Is it the thermal plasma valve?", `
       
       "Checked that," Yates shook his head. "Works fine still."
       
-      `},
+      `],
 
-      {"Well, what else could it be?": () => { 
+      ["Well, what else could it be?", () => { 
       setState("annoyed")
         msg(`
       
         "Look," said Yates with barely restrained annoyance, "Unless you suddenly become an expert at ship repair, please go away."
       
         `)}
-      }
+      ]
 
     ])
-    */
 
 
     done(`Well, keep working, we've got to get off this rock`, () => {

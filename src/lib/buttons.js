@@ -1,21 +1,52 @@
 
-const once = (options) => {
-  const label = Object.keys(options).filter(
-    (x) => reserved.indexOf(x) === -1
-  )[0]
+const once = (label, callback) => {
   const id = `d${stringToHash(label)}`
 
   if (!g$[id]) {
     btn(label, () => {
       g$[id] = true
-      if (typeof options[label] === "function") {
-        options[label]()
+      if (typeof callback === "function") {
+        callback()
       } else {
-        msg(options[label])
+        msg(callback)
       }
     })
   }
 }
+
+
+const stack = (btnArr) => {
+  const [topLabel, topCallback] = btnArr.shift();
+  const [finalLabel, finalCallback] = btnArr.pop();
+  const id = `stack-function-${stringToHash(topLabel)}`
+  c$[id] = () => {
+    if (typeof topCallback === "function") {
+      topCallback()
+    } else {
+      msg(topCallback)
+    }
+    btnArr.map(pair => {
+      const [label, callback] = pair
+      once(label, callback)
+    })
+    const ids = btnArr.map(pair => typeof g$[`d${stringToHash(pair[0])}`] !== 'undefined').filter(v => v !== true)
+    if (ids.length === 0) {
+      btn(finalLabel, () => {
+        setState()
+        if (typeof finalCallback === "function") {
+          finalCallback()
+        } else {
+          msg(finalCallback)
+        }
+      })
+    }
+  }
+  btn(topLabel, () => {
+    setState(id)
+    c$[id]()
+  })
+}
+
 
 // clear screen function - will be called after button is pressed
 const clearScreen = () => {
@@ -160,7 +191,6 @@ const btn = (label, callback, unshift) => {
       }, 450)
     }
 
-    // finalize new button and determine where to add it respective to other buttons
     b.className = "button"
     b.innerHTML = `<div class='buttonText'>${skylight(label, true)}</div>`
     if (!unshift) {
